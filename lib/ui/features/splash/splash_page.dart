@@ -1,10 +1,10 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:gallery_test_task_flutter_getx/root/root_screen.dart';
-import 'package:gallery_test_task_flutter_getx/ui/features/on_boarding/on_boarding_screen.dart';
-import 'package:gallery_test_task_flutter_getx/utils/decorations.dart';
-import 'package:gallery_test_task_flutter_getx/utils/shared_pref_utils.dart';
-import 'package:gallery_test_task_flutter_getx/utils/text_util.dart';
+import 'package:test_task_flutter_getx/root/root_screen.dart';
+import 'package:test_task_flutter_getx/ui/features/on_boarding/on_boarding_screen.dart';
+import 'package:test_task_flutter_getx/utils/decorations.dart';
+import 'package:test_task_flutter_getx/utils/shared_pref_utils.dart';
+import 'package:test_task_flutter_getx/utils/text_util.dart';
 import 'package:get/get.dart';
 import '../../../data/local/constants.dart';
 import '../../../utils/dimens.dart';

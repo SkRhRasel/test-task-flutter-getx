@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:gallery_test_task_flutter_getx/utils/text_field_util.dart';
-import 'package:gallery_test_task_flutter_getx/utils/text_util.dart';
+import 'package:test_task_flutter_getx/utils/text_field_util.dart';
+import 'package:test_task_flutter_getx/utils/text_util.dart';
 import 'package:get/get.dart';
 import '../data/local/constants.dart';
 import 'button_util.dart';

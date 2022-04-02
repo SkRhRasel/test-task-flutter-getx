@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:gallery_test_task_flutter_getx/data/local/strings.dart';
-import 'package:gallery_test_task_flutter_getx/utils/config.dart';
-import 'package:gallery_test_task_flutter_getx/utils/shared_pref_utils.dart';
 import 'package:get/get.dart';
+import 'package:test_task_flutter_getx/utils/config.dart';
+
 import 'data/local/constants.dart';
+import 'data/local/strings.dart';
 import 'ui/features/splash/splash_page.dart';
+import 'utils/shared_pref_utils.dart';
 import 'utils/theme.dart';
 
 void main() async {

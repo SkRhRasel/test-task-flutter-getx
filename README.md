@@ -1,4 +1,4 @@
-# gallery_test_task_flutter_getx
+# test_task_flutter_getx
 
 A new Flutter project for test task using flutter GetX.
 

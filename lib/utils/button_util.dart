@@ -1,8 +1,8 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:gallery_test_task_flutter_getx/utils/decorations.dart';
-import 'package:gallery_test_task_flutter_getx/utils/text_util.dart';
+import 'package:test_task_flutter_getx/utils/decorations.dart';
+import 'package:test_task_flutter_getx/utils/text_util.dart';
 import 'package:get/get.dart';
 import 'dimens.dart';
 import 'image_util.dart';

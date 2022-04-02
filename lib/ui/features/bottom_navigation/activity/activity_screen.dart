@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:gallery_test_task_flutter_getx/utils/custom_appbar.dart';
-import 'package:gallery_test_task_flutter_getx/utils/dimens.dart';
-import 'package:gallery_test_task_flutter_getx/utils/text_util.dart';
+import 'package:test_task_flutter_getx/utils/custom_appbar.dart';
+import 'package:test_task_flutter_getx/utils/dimens.dart';
+import 'package:test_task_flutter_getx/utils/text_util.dart';
 import 'package:get/get.dart';
 import 'activity_screen_controller.dart';
 

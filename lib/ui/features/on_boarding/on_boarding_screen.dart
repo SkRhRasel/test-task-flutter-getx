@@ -1,9 +1,9 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:gallery_test_task_flutter_getx/root/root_screen.dart';
-import 'package:gallery_test_task_flutter_getx/utils/button_util.dart';
-import 'package:gallery_test_task_flutter_getx/utils/decorations.dart';
-import 'package:gallery_test_task_flutter_getx/utils/shared_pref_utils.dart';
+import 'package:test_task_flutter_getx/root/root_screen.dart';
+import 'package:test_task_flutter_getx/utils/button_util.dart';
+import 'package:test_task_flutter_getx/utils/decorations.dart';
+import 'package:test_task_flutter_getx/utils/shared_pref_utils.dart';
 import 'package:get/get.dart';
 import '../../../data/local/constants.dart';
 import '../../../utils/dimens.dart';

@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'package:connectivity_plus/connectivity_plus.dart';
-import 'package:gallery_test_task_flutter_getx/utils/toast_utils.dart';
+import 'package:test_task_flutter_getx/utils/toast_utils.dart';
 import 'package:get/get.dart';
 
 ///Identifies Network Availability.
