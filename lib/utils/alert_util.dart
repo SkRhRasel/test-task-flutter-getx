@@ -17,10 +17,10 @@ void alertForVerifyAccount(BuildContext context, String email) {
     content: Column(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
-        textAutoSize(context,text: "Need verification".tr,
+        textAutoSize(text: "Need verification".tr,
             textAlign: TextAlign.center, fontSize: dp24),
         const VSpacer10(),
-        textAutoSize(context,text: "Your account is unverified. Please verify your account".tr,
+        textAutoSize(text: "Your account is unverified. Please verify your account".tr,
             maxLines: 4,
             textAlign: TextAlign.center,
             fontSize: dp14,
@@ -57,8 +57,6 @@ void getAlertDialogAddPocket({VoidCallback? buttonAction}) {
           const VSpacer20(),
           textBodyBold14(text: "Coin Amount"),
           const VSpacer10(),
-          textFieldBorderedMain(
-              hintText: "Your Amount", textInputType: TextInputType.number, text: ''),
           const VSpacer10(),
           textBodyBold14(text: "Select Your Wallet"),
           const VSpacer10(),

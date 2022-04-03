@@ -44,6 +44,7 @@ dependencies:
   flutter_svg: ^1.0.3
   fluttertoast: ^8.0.9
   cached_network_image: ^3.2.0
+  grouped_list: ^4.2.0
 
   auto_size_text: ^3.0.0
   animated_bottom_navigation_bar: ^0.3.2
@@ -97,6 +98,7 @@ flutter:
     - family: CustomIcons
       fonts:
         - asset: assets/fonts/CustomIcons.ttf
+        - asset: assets/fonts/CustomIcons2.ttf
   # fonts:
   #   - family: Schyler
   #     fonts:

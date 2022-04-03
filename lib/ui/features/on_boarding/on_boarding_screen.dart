@@ -37,10 +37,10 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
       // width: isActive ? Dimens.paddingMid : Dimens.paddingMid,
       decoration: BoxDecoration(
         color: isActive
-            ? Theme.of(context).focusColor
-            : Theme.of(context).primaryColor,
+            ? Get.theme.focusColor
+            : Get.theme.primaryColor,
         border:
-            Border.all(color: Theme.of(context).primaryColorLight, width: 2),
+            Border.all(color: Get.theme.primaryColorLight, width: 2),
         borderRadius: const BorderRadius.all(Radius.elliptical(10, 10)),
       ),
     );
@@ -51,7 +51,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
     final double screenWidth = MediaQuery.of(context).size.width;
     final double screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
-      backgroundColor: Theme.of(context).primaryColor,
+      backgroundColor: Get.theme.primaryColor,
       body: PageView(
         physics: const ClampingScrollPhysics(),
         controller: _pageController,
@@ -105,7 +105,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                     child: Align(alignment: Alignment.centerRight,
                       child: textAutoSizePoppins(context,
                           text: page == 2 ? '' : 'Skip'.tr, textAlign: TextAlign.right,
-                          color: Theme.of(context).primaryColor,
+                          color: Get.theme.primaryColor,
                           fontSize: Dimens.regularFontSizeExtraMid, onTap: () {
                         SharedPrefUtil.writeBoolean(PrefKeyConstant.kIsOnBoardingDone, true);
                         Get.off(() => const RootScreen(), transition: Transition.leftToRightWithFade);
@@ -130,7 +130,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                       maxLines: 3,
                       textAlign: TextAlign.center,
                       fontSize: Dimens.titleFontSizeLarge,
-                      color: Theme.of(context).primaryColorDark),
+                      color: Get.theme.primaryColorDark),
                   const SizedBox(height: Dimens.gapLarge),
                   textAutoSizeBodyMedium(context,
                       text: description, maxLines: 5),

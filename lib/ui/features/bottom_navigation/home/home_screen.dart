@@ -5,17 +5,17 @@ import 'package:test_task_flutter_getx/utils/dimens.dart';
 import 'package:test_task_flutter_getx/utils/image_util.dart';
 import 'package:test_task_flutter_getx/utils/text_util.dart';
 import 'package:get/get.dart';
-import 'dashboard_controller.dart';
+import 'home_controller.dart';
 
-class DashboardScreen extends StatefulWidget {
-  const DashboardScreen({Key? key}) : super(key: key);
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({Key? key}) : super(key: key);
 
   @override
-  _DashboardScreenState createState() => _DashboardScreenState();
+  _HomeScreenState createState() => _HomeScreenState();
 }
 
-class _DashboardScreenState extends State<DashboardScreen> {
-  final _controller = Get.put(DashboardController());
+class _HomeScreenState extends State<HomeScreen> {
+  final _controller = Get.put(HomeController());
 
   @override
   void initState() {
@@ -31,14 +31,12 @@ class _DashboardScreenState extends State<DashboardScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final double screenWidth = MediaQuery.of(context).size.width;
-    final double screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
       backgroundColor: Colors.transparent,
-      appBar: appBarMain(context, title: "Dashboard".tr, hideRightIcon: false),
+      appBar: appBarMain(context, title: "Home".tr, hideRightIcon: false),
       body: Container(
         padding: const EdgeInsets.symmetric(horizontal: Dimens.paddingLarge),
-        height: screenHeight,
+        height: Get.height,
         child: ListView(
           shrinkWrap: true,
           children: [
@@ -46,19 +44,6 @@ class _DashboardScreenState extends State<DashboardScreen> {
               onRefresh: _controller.getData,
               child: Column(
                 children: [
-                  ExpansionTile(
-                    title:
-                    textAutoSizeDMSans(context, text: "BTC/USDT Chart".tr),
-                    backgroundColor: Colors.transparent,
-                    collapsedIconColor: Theme.of(context).primaryColorLight,
-                    collapsedBackgroundColor: Colors.transparent,
-                    iconColor: Theme.of(context).primaryColorLight,
-                    tilePadding: const EdgeInsets.all(0),
-                    childrenPadding: const EdgeInsets.all(0),
-                    children: <Widget>[
-                      imageView(imagePath: AssetConstants.btcChart),
-                    ],
-                  ),
                   const SizedBox(height: Dimens.gapMid),
                 ],
               ),
@@ -88,7 +73,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
         textAutoSizePoppins(context,
             text: '0.366255'.tr,
             textAlign: TextAlign.left,
-            color: Theme.of(context).errorColor),
+            color: Get.theme.errorColor),
         textAutoSizePoppins(
           context,
           text: '0.366255'.tr,
@@ -105,7 +90,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
         textAutoSizePoppins(context,
             text: '0.366255'.tr,
             textAlign: TextAlign.left,
-            color: Theme.of(context).colorScheme.secondary),
+            color: Get.theme.colorScheme.secondary),
         textAutoSizePoppins(
           context,
           text: '0.366255'.tr,

@@ -3,25 +3,25 @@ import 'package:test_task_flutter_getx/utils/custom_appbar.dart';
 import 'package:test_task_flutter_getx/utils/dimens.dart';
 import 'package:test_task_flutter_getx/utils/text_util.dart';
 import 'package:get/get.dart';
-import 'activity_screen_controller.dart';
+import 'shop_screen_controller.dart';
 
-class ActivityScreen extends StatefulWidget {
+class ShopScreen extends StatefulWidget {
   final IconData? iconData;
 
-  const ActivityScreen({Key? key, this.iconData}) : super(key: key);
+  const ShopScreen({Key? key, this.iconData}) : super(key: key);
 
   @override
-  _ActivityScreenState createState() => _ActivityScreenState();
+  _ShopScreenState createState() => _ShopScreenState();
 }
 
-class _ActivityScreenState extends State<ActivityScreen>
+class _ShopScreenState extends State<ShopScreen>
     with TickerProviderStateMixin {
-  final _controller = Get.put(AllCategoriesController());
+  final _controller = Get.put(ShopController());
   late AnimationController _animationController;
   late Animation<double> animation;
 
   @override
-  void didUpdateWidget(ActivityScreen oldWidget) {
+  void didUpdateWidget(ShopScreen oldWidget) {
     super.didUpdateWidget(oldWidget);
     if (oldWidget.iconData != widget.iconData) {
       _startAnimation();
@@ -64,14 +64,12 @@ class _ActivityScreenState extends State<ActivityScreen>
 
   @override
   Widget build(BuildContext context) {
-    final double screenWidth = MediaQuery.of(context).size.width;
-    final double screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
       backgroundColor: Get.theme.backgroundColor,
-      appBar: appBarMain(context, title: "Activity".tr, hideRightIcon: false),
+      appBar: appBarMain(context, title: "Shop".tr, hideRightIcon: false),
       body: Container(
         padding: const EdgeInsets.symmetric(horizontal: Dimens.paddingLarge),
-        height: screenHeight,
+        height: Get.height,
         child: Column(
           children: [
             const SizedBox(height: Dimens.gapMin),

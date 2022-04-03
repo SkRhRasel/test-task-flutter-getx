@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class AllCategoriesController extends GetxController {
+class ShopController extends GetxController {
   Future<void> getData() async {
     // todayAuctionList.value = <Auction>[];
     // categoryList.value = <Category>[];

@@ -5,18 +5,18 @@ import 'package:test_task_flutter_getx/utils/dimens.dart';
 import 'package:test_task_flutter_getx/utils/image_util.dart';
 import 'package:test_task_flutter_getx/utils/text_util.dart';
 import 'package:get/get.dart';
-import 'market_controller.dart';
+import 'inbox_controller.dart';
 
-class MarketScreen extends StatefulWidget {
-  const MarketScreen({Key? key}) : super(key: key);
+class InboxScreen extends StatefulWidget {
+  const InboxScreen({Key? key}) : super(key: key);
 
   @override
-  _MarketScreenState createState() => _MarketScreenState();
+  _InboxScreenState createState() => _InboxScreenState();
 }
 
-class _MarketScreenState extends State<MarketScreen> {
-  final FavoriteItemsController _controller =
-      Get.put(FavoriteItemsController());
+class _InboxScreenState extends State<InboxScreen> {
+  final InboxController _controller =
+      Get.put(InboxController());
 
   @override
   void initState() {
@@ -32,13 +32,11 @@ class _MarketScreenState extends State<MarketScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final double screenWidth = MediaQuery.of(context).size.width;
-    final double screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
       backgroundColor: Colors.transparent,
-      appBar: appBarMain(context, title: "Market".tr, hideRightIcon: false),
+      appBar: appBarMain(context, title: "Inbox".tr, hideRightIcon: false),
       body: SizedBox(
-        height: screenHeight,
+        height: Get.height,
         child: Column(
           children: [
             Expanded(
@@ -53,9 +51,9 @@ class _MarketScreenState extends State<MarketScreen> {
                           title:
                           textAutoSizeDMSans(context, text: "BTC/USDT Chart".tr),
                           backgroundColor: Colors.transparent,
-                          collapsedIconColor: Theme.of(context).primaryColorLight,
+                          collapsedIconColor: Get.theme.primaryColorLight,
                           collapsedBackgroundColor: Colors.transparent,
-                          iconColor: Theme.of(context).primaryColorLight,
+                          iconColor: Get.theme.primaryColorLight,
                           tilePadding: const EdgeInsets.all(0),
                           childrenPadding: const EdgeInsets.all(0),
                           children: <Widget>[

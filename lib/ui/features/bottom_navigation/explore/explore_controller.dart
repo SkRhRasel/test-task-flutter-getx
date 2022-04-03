@@ -1,14 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:test_task_flutter_getx/data/models/imageList.dart';
 
-class WalletController extends GetxController with GetSingleTickerProviderStateMixin {
+class ExploreController extends GetxController with GetSingleTickerProviderStateMixin {
 TabController? walletTabController;
 
 TextEditingController? searchController;
 
 
+RxList<ImageList> imageList = <ImageList>[].obs;
+
 List<int>? assetBalancesList = <int>[1,2,3,4,5,6].obs;
 bool isLoading = true;
+int loadedPage = 0;
+bool hasMoreData = true;
 
 
 RxString selectedCurrencyType = "".obs;

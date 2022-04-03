@@ -6,7 +6,7 @@ import 'common_utils.dart';
 import 'decorations.dart';
 import 'dimens.dart';
 
-Widget textAutoSize(BuildContext context,
+Widget textAutoSize(
     {required String text,
     VoidCallback? onTap,
     double hMargin = dp0,
@@ -17,10 +17,8 @@ Widget textAutoSize(BuildContext context,
     TextAlign textAlign = TextAlign.start,
     double fontSize = Dimens.regularFontSizeMid,
     TextDecoration? decoration}) {
-  double screenWidth = MediaQuery.of(context).size.width;
-  double screenHeight = MediaQuery.of(context).size.height;
-  var colorL = color ?? Theme.of(context).primaryColorDark;
-  var widthL = width ?? screenWidth;
+  var colorL = color ?? Get.theme.primaryColorDark;
+  var widthL = width ?? Get.width;
   return Container(
     // width: widthL,
     //color: Colors.red,
@@ -32,7 +30,7 @@ Widget textAutoSize(BuildContext context,
         minFontSize: Dimens.regularFontSizeMid,
         overflow: TextOverflow.ellipsis,
         textAlign: textAlign,
-        style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+        style: Get.theme.textTheme.bodyMedium!.copyWith(
             color: colorL,
             fontWeight: fontWeight,
             fontSize: fontSize,
@@ -57,7 +55,7 @@ Widget textAutoSizePoppins(BuildContext context,
     TextDecoration? decoration}) {
   double screenWidth = MediaQuery.of(context).size.width;
   double screenHeight = MediaQuery.of(context).size.height;
-  var colorL = color ?? Theme.of(context).primaryColorLight;
+  var colorL = color ?? Get.theme.primaryColorLight;
   var widthL = width ?? screenWidth;
   return Container(
     // width: widthL,
@@ -71,7 +69,7 @@ Widget textAutoSizePoppins(BuildContext context,
         minFontSize: Dimens.regularFontSizeSmall,
         overflow: TextOverflow.ellipsis,
         textAlign: textAlign,
-        style: Theme.of(context).textTheme.labelSmall!.copyWith(
+        style: Get.theme.textTheme.labelSmall!.copyWith(
             color: colorL,
             fontWeight: fontWeight,
             fontSize: fontSize,
@@ -96,7 +94,7 @@ Widget textAutoSizeKarla(BuildContext context,
     TextDecoration? decoration}) {
   double screenWidth = MediaQuery.of(context).size.width;
   double screenHeight = MediaQuery.of(context).size.height;
-  var colorL = color ?? Theme.of(context).primaryColorLight;
+  var colorL = color ?? Get.theme.primaryColorLight;
   var widthL = width ?? screenWidth;
   return Container(
     // width: widthL,
@@ -110,7 +108,7 @@ Widget textAutoSizeKarla(BuildContext context,
         minFontSize: Dimens.regularFontSizeSmall,
         overflow: TextOverflow.ellipsis,
         textAlign: textAlign,
-        style: Theme.of(context).textTheme.bodySmall!.copyWith(
+        style: Get.theme.textTheme.bodySmall!.copyWith(
             color: colorL,
             fontWeight: fontWeight,
             fontSize: fontSize,
@@ -134,7 +132,7 @@ Widget textAutoSizeDMSans(BuildContext context,
     TextDecoration? decoration}) {
   double screenWidth = MediaQuery.of(context).size.width;
   double screenHeight = MediaQuery.of(context).size.height;
-  var colorL = color ?? Theme.of(context).primaryColorDark;
+  var colorL = color ?? Get.theme.primaryColorDark;
   var widthL = width ?? screenWidth;
   return Container(
     // width: widthL,
@@ -147,7 +145,7 @@ Widget textAutoSizeDMSans(BuildContext context,
         minFontSize: Dimens.regularFontSizeMid,
         overflow: TextOverflow.ellipsis,
         textAlign: textAlign,
-        style: Theme.of(context).textTheme.labelMedium!.copyWith(
+        style: Get.theme.textTheme.labelMedium!.copyWith(
             color: colorL,
             fontWeight: fontWeight,
             fontSize: fontSize,
@@ -167,12 +165,12 @@ Widget textSpanDMSans(BuildContext context,
     TextAlign textAlign = TextAlign.center,
     FontWeight fontWeight = FontWeight.bold,
     TextDecoration? decoration}) {
-  var colorText = mainTextColor ?? Theme.of(context).primaryColorDark;
-  var colorSpan = spanTextColor ?? Theme.of(context).colorScheme.secondary;
+  var colorText = mainTextColor ?? Get.theme.primaryColorDark;
+  var colorSpan = spanTextColor ?? Get.theme.colorScheme.secondary;
   return AutoSizeText.rich(
     TextSpan(
       text: mainText,
-      style: Theme.of(context).textTheme.labelMedium!.copyWith(
+      style: Get.theme.textTheme.labelMedium!.copyWith(
           color: colorText,
           fontWeight: fontWeight,
           fontSize: fontSize,
@@ -180,7 +178,7 @@ Widget textSpanDMSans(BuildContext context,
       children: <TextSpan>[
         TextSpan(
             text: spanText,
-            style: Theme.of(context).textTheme.labelMedium!.copyWith(
+            style: Get.theme.textTheme.labelMedium!.copyWith(
                 fontSize: fontSize,
                 color: colorSpan,
                 fontWeight: fontWeight),
@@ -205,7 +203,7 @@ Widget textAutoSizeHeadlineMedium(
 }) {
   double screenWidth = MediaQuery.of(context).size.width;
   double screenHeight = MediaQuery.of(context).size.height;
-  var colorL = color ?? Theme.of(context).primaryColorDark;
+  var colorL = color ?? Get.theme.primaryColorDark;
   var widthL = width ?? screenWidth;
   return Container(
     // width: widthL,
@@ -218,7 +216,7 @@ Widget textAutoSizeHeadlineMedium(
         minFontSize: Dimens.regularFontSizeMid,
         overflow: TextOverflow.ellipsis,
         textAlign: textAlign,
-        style: Theme.of(context).textTheme.headlineMedium,
+        style: Get.theme.textTheme.headlineMedium,
       ),
       onTap: onTap,
     ),
@@ -238,7 +236,7 @@ Widget textAutoSizeLabelSmallSubtitle(BuildContext context,
     TextDecoration? decoration}) {
   double screenWidth = MediaQuery.of(context).size.width;
   double screenHeight = MediaQuery.of(context).size.height;
-  var colorL = color ?? Theme.of(context).primaryColorLight;
+  var colorL = color ?? Get.theme.primaryColorLight;
   var widthL = width ?? screenWidth;
   return Container(
     // width: widthL,
@@ -251,7 +249,7 @@ Widget textAutoSizeLabelSmallSubtitle(BuildContext context,
         minFontSize: Dimens.regularFontSizeSmall,
         overflow: TextOverflow.ellipsis,
         textAlign: textAlign,
-        style: Theme.of(context).textTheme.labelSmall!.copyWith(
+        style: Get.theme.textTheme.labelSmall!.copyWith(
             color: colorL, fontSize: fontSize, decoration: decoration),
       ),
       onTap: onTap,
@@ -271,7 +269,7 @@ Widget textAutoSizeBodyMedium(BuildContext context,
     TextDecoration? decoration}) {
   double screenWidth = MediaQuery.of(context).size.width;
   double screenHeight = MediaQuery.of(context).size.height;
-  var colorL = color ?? Theme.of(context).primaryColorDark;
+  var colorL = color ?? Get.theme.primaryColorDark;
   var widthL = width ?? screenWidth;
   return Container(
     width: widthL,
@@ -284,7 +282,7 @@ Widget textAutoSizeBodyMedium(BuildContext context,
         minFontSize: Dimens.regularFontSizeExtraMid,
         overflow: TextOverflow.ellipsis,
         textAlign: textAlign,
-        style: Theme.of(context).textTheme.bodyMedium,
+        style: Get.theme.textTheme.bodyMedium,
       ),
       onTap: onTap,
     ),
@@ -560,14 +558,14 @@ Widget textSpanWithAction(
   return AutoSizeText.rich(
     TextSpan(
       text: main,
-      style: Theme.of(context)
+      style: Get.theme
           .textTheme
           .bodyMedium!
           .copyWith(fontSize: fontSize, fontWeight: fontWeight),
       children: <TextSpan>[
         TextSpan(
             text: clickAble,
-            style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+            style: Get.theme.textTheme.bodyMedium!.copyWith(
                 fontSize: fontSize,
                 color: Get.theme.focusColor,
                 fontWeight: fontWeight),
@@ -641,7 +639,7 @@ Widget textWithCopyButton(BuildContext context, String btnText, String text) {
               height: 50,
               alignment: Alignment.center,
               decoration: boxDecorationLeftRound(radius: dp5),
-              child: textAutoSize(context,
+              child: textAutoSize(
                   text: btnText,
                   maxLines: 1,
                   width: 50,
@@ -651,7 +649,7 @@ Widget textWithCopyButton(BuildContext context, String btnText, String text) {
           Expanded(
               child: Align(
                   alignment: Alignment.center,
-                  child: textAutoSize(context, text: text, maxLines: 2))),
+                  child: textAutoSize( text: text, maxLines: 2))),
         ],
       ));
 }
@@ -669,7 +667,7 @@ Widget textWithBackground(String text, BuildContext context,
     width: width,
     height: height,
     decoration: boxDecorationRoundCorner(color: bgColor),
-    child: textAutoSize(context,
+    child: textAutoSize(
         text: text, color: textColorL, maxLines: maxLines, fontSize: dp10),
   );
 }

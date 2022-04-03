@@ -129,7 +129,7 @@ getRoundCornerBorderOnlyBottom() {
 
 getRoundSoftTransparentBox() {
   return BoxDecoration(
-      color: Get.theme.primaryColor.withOpacity(0.03),
+      color: Get.theme.primaryColor,
       borderRadius: const BorderRadius.all(Radius.circular(dp7)));
 }
 

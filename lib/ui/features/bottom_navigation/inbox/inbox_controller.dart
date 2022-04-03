@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-class FavoriteItemsController extends GetxController{
+class InboxController extends GetxController{
 
 
   List<int> marketBannerList = <int>[1,2,3,4,5,6].obs;

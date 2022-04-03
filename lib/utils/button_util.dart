@@ -79,15 +79,15 @@ Widget buttonRoundedAccent(BuildContext context,
           child: AutoSizeText(text, style: Get.theme.textTheme.labelLarge,minFontSize: 10),
           style: ButtonStyle(
               foregroundColor: MaterialStateProperty.all<Color>(
-                  Theme.of(context).colorScheme.secondary),
+                  Get.theme.colorScheme.secondary),
               backgroundColor: MaterialStateProperty.all<Color>(
-                  Theme.of(context).colorScheme.secondary),
+                  Get.theme.colorScheme.secondary),
               shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                   RoundedRectangleBorder(
                       borderRadius: const BorderRadius.all(
                           Radius.circular(Dimens.borderRadius)),
                       side: BorderSide(
-                          color: Theme.of(context).colorScheme.secondary)))),
+                          color: Get.theme.colorScheme.secondary)))),
           onPressed: onPressCallback));
 }
 
@@ -106,14 +106,14 @@ Widget buttonRoundedWarning(BuildContext context,
           child: AutoSizeText(text, style: Get.theme.textTheme.labelLarge),
           style: ButtonStyle(
               foregroundColor: MaterialStateProperty.all<Color>(
-                  Theme.of(context).errorColor),
+                  Get.theme.errorColor),
               backgroundColor: MaterialStateProperty.all<Color>(
-                  Theme.of(context).errorColor),
+                  Get.theme.errorColor),
               shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                   RoundedRectangleBorder(
                       borderRadius: const BorderRadius.all(
                           Radius.circular(Dimens.borderRadius)),
-                      side: BorderSide(color: Theme.of(context).errorColor)))),
+                      side: BorderSide(color: Get.theme.errorColor)))),
           onPressed: onPressCallback));
 }
 
@@ -266,7 +266,7 @@ Widget buttonLoadMore(BuildContext context, {double fontSize = dp15, VoidCallbac
         width: MediaQuery.of(context).size.width/2,
         alignment: Alignment.center,
         padding: const EdgeInsets.symmetric(horizontal: 15),
-        decoration: boxDecorationRoundBorder(borderColor: Theme.of(context).dividerColor),
+        decoration: boxDecorationRoundBorder(borderColor: Get.theme.dividerColor),
         child: textAutoSizeDMSans(context, text: 'Load more'.tr)),
   );
 }
@@ -279,7 +279,7 @@ Widget buttonBorder(BuildContext context, {String? btnText, double fontSize = dp
         width: width,
         alignment: Alignment.center,
         padding: const EdgeInsets.symmetric(horizontal: 15),
-        decoration: boxDecorationRoundBorder(borderColor: Theme.of(context).dividerColor,radius: radius),
+        decoration: boxDecorationRoundBorder(borderColor: Get.theme.dividerColor,radius: radius),
         child: textAutoSizeDMSans(context, text: btnText!)),
   );
 }

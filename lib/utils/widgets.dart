@@ -3,6 +3,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:test_task_flutter_getx/utils/text_util.dart';
 import 'package:get/get.dart';
 import '../data/local/constants.dart';
+import '../ui/features/search/search_page.dart';
 import 'button_util.dart';
 import 'common_utils.dart';
 import 'decorations.dart';
@@ -42,7 +43,7 @@ Widget listTitleWithLeftIcon(BuildContext context,
               iconPath: iconPath!,
               size: dp18,
               iconColor: iconColor),
-          textAutoSize(context, text: title!, maxLines: 1),
+          textAutoSize( text: title!, maxLines: 1),
         ],
       ),
     ),
@@ -61,7 +62,7 @@ Widget listTitleWithArrow(BuildContext context,
         child: Row(
           children: [
             Expanded(
-                child: textAutoSize(context,
+                child: textAutoSize(
                     text: title!, fontWeight: FontWeight.w600, fontSize: 14)),
             buttonOnlyIcon(
                 onPressCallback: action,
@@ -120,7 +121,7 @@ Widget showEmptyView() {
   );
 }
 
-Widget handleEmptyViewWithLoading(BuildContext context, bool isLoading,
+Widget handleEmptyViewWithLoading(bool isLoading,
     {double height = 50, String? message}) {
   String _message = message ?? "Sorry! Data not found".tr;
   return Container(
@@ -130,7 +131,6 @@ Widget handleEmptyViewWithLoading(BuildContext context, bool isLoading,
         child: isLoading
             ? const CircularProgressIndicator()
             : textAutoSize(
-                context,
                 text: _message,
                 maxLines: 2,
                 fontWeight: FontWeight.normal,
@@ -146,17 +146,17 @@ Widget viewTitleWithSubTitleText(BuildContext context,
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         const SizedBox(height: Dimens.gapLarge),
-        textAutoSize(context,
+        textAutoSize(
             text: stringNullCheck(title),
             textAlign: TextAlign.center,
             fontSize: dp24,
-            color: Theme.of(context).primaryColorDark,
+            color: Get.theme.primaryColorDark,
             fontWeight: FontWeight.bold),
         const SizedBox(height: Dimens.gapMin),
-        textAutoSize(context,
+        textAutoSize(
             text: stringNullCheck(subTitle),
             textAlign: TextAlign.center,
-            color: Theme.of(context).primaryColorLight,
+            color: Get.theme.primaryColorLight,
             maxLines: maxLines!),
         const SizedBox(height: Dimens.gapMid),
       ],
@@ -173,22 +173,22 @@ Widget viewTitleWithTwoSubTitleText(BuildContext context,
     child: Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        textAutoSize(context,
+        textAutoSize(
             text: stringNullCheck(title),
             textAlign: TextAlign.center,
             fontSize: dp24,
-            color: Theme.of(context).primaryColorDark,
+            color: Get.theme.primaryColorDark,
             fontWeight: FontWeight.bold),
         const SizedBox(height: Dimens.gapExtraMin),
-        textAutoSize(context,
+        textAutoSize(
             text: stringNullCheck(subTitle),
             textAlign: TextAlign.center,
-            color: Theme.of(context).primaryColorLight,
+            color: Get.theme.primaryColorLight,
             maxLines: maxLines),
-        textAutoSize(context,
+        textAutoSize(
             text: stringNullCheck(subColorTitle),
             textAlign: TextAlign.center,
-            color: Theme.of(context).colorScheme.secondary,
+            color: Get.theme.colorScheme.secondary,
             maxLines: maxLines),
         const SizedBox(height: Dimens.gapMid),
       ],
@@ -263,7 +263,7 @@ Widget buttonOnlyIconWithRoundBackground(
 //           padding: const EdgeInsets.all(0),
 //           showCountryOnly: false,
 //           initialSelection: initialSelection,
-//           textStyle: Theme.of(context).textTheme.bodyMedium,
+//           textStyle: Get.theme.textTheme.bodyMedium,
 //           showOnlyCountryWhenClosed: false,
 //           onInit: (value) {},
 //           onChanged: (value) {
@@ -273,9 +273,9 @@ Widget buttonOnlyIconWithRoundBackground(
 //         Icon(
 //           Icons.keyboard_arrow_down,
 //           size: dp20,
-//           color: Theme.of(context).primaryColorLight,
+//           color: Get.theme.primaryColorLight,
 //         ),
-//         verticalDivider(color: Theme.of(context).dividerColor, padding: 0)
+//         verticalDivider(color: Get.theme.dividerColor, padding: 0)
 //       ],
 //     ),
 //   );
@@ -294,20 +294,20 @@ Widget dropDownList(BuildContext context, List<String> items,
     height: Dimens.btnHeightMain,
     width: Get.width,
     decoration: boxDecorationRoundBorder(
-        color: Theme.of(context).primaryColor,
-        borderColor: Theme.of(context).primaryColorLight),
+        color: Get.theme.primaryColor,
+        borderColor: Get.theme.primaryColorLight),
     child: DropdownButton<String>(
       isExpanded: true,
       value: selectedValue.isEmpty ? null : selectedValue,
       hint: textAutoSizePoppins(context,
           text: hint,
           fontSize: dp12,
-          color: Theme.of(context).primaryColorLight,
+          color: Get.theme.primaryColorLight,
           width: widthL),
       icon: const Icon(Icons.keyboard_arrow_down_outlined,
           color: kMainTextGrayColor),
       elevation: 10,
-      dropdownColor: Theme.of(context).dividerColor,
+      dropdownColor: Get.theme.dividerColor,
       borderRadius: const BorderRadius.all(Radius.circular(4)),
       style: Get.textTheme.bodyMedium,
       underline: Container(height: 0, color: Colors.transparent),
@@ -340,8 +340,8 @@ Widget dropDownListForProfile(BuildContext context, List<String> items,
     double? iconSize,
     bool? caretFilled = false,
     bool? borderCurve = true}) {
-  bgColor = bgColor ?? Theme.of(context).primaryColor;
-  borderColor = borderColor ?? Theme.of(context).dividerColor;
+  bgColor = bgColor ?? Get.theme.primaryColor;
+  borderColor = borderColor ?? Get.theme.dividerColor;
   padding = padding ?? Dimens.marginMax;
   height = height ?? Dimens.btnHeightMain;
   iconSize = iconSize ?? Dimens.iconSize;
@@ -368,7 +368,7 @@ Widget dropDownListForProfile(BuildContext context, List<String> items,
       hint: textAutoSizePoppins(context,
           fontSize: hintFontSize,
           text: hint,
-          color: Theme.of(context).primaryColorLight),
+          color: Get.theme.primaryColorLight),
       icon: Align(
           alignment: Alignment.centerRight,
           child: caretFilled == false
@@ -377,7 +377,7 @@ Widget dropDownListForProfile(BuildContext context, List<String> items,
               : const Icon(Icons.arrow_drop_down,
                   color: kDropdownBtnColor, size: 18)),
       elevation: 10,
-      dropdownColor: Theme.of(context).dividerColor,
+      dropdownColor: Get.theme.dividerColor,
       borderRadius: const BorderRadius.all(Radius.circular(4)),
       style: Get.textTheme.bodySmall!.copyWith(fontSize: 14),
       underline: Container(height: 0, color: Colors.transparent),
@@ -406,8 +406,8 @@ Widget dropDownListMain(BuildContext context, List<String> items,
     double? iconSize,
     bool? caretFilled = false,
     bool? borderCurve = true}) {
-  bgColor = bgColor ?? Theme.of(context).primaryColor;
-  borderColor = borderColor ?? Theme.of(context).dividerColor;
+  bgColor = bgColor ?? Get.theme.primaryColor;
+  borderColor = borderColor ?? Get.theme.dividerColor;
   padding = padding ?? Dimens.marginMax;
   height = height ?? Dimens.btnHeightMain;
   iconSize = iconSize ?? Dimens.iconSize;
@@ -434,7 +434,7 @@ Widget dropDownListMain(BuildContext context, List<String> items,
       hint: textAutoSizePoppins(context,
           fontSize: hintFontSize,
           text: hint,
-          color: Theme.of(context).primaryColorLight),
+          color: Get.theme.primaryColorLight),
       icon: Align(
           alignment: Alignment.centerRight,
           child: caretFilled == false
@@ -443,7 +443,7 @@ Widget dropDownListMain(BuildContext context, List<String> items,
               : const Icon(Icons.arrow_drop_down,
                   color: kDropdownBtnColor, size: 18)),
       elevation: 10,
-      dropdownColor: Theme.of(context).dividerColor,
+      dropdownColor: Get.theme.dividerColor,
       borderRadius: const BorderRadius.all(Radius.circular(4)),
       style: Get.textTheme.bodySmall!.copyWith(fontSize: 14),
       underline: Container(height: 0, color: Colors.transparent),
@@ -471,7 +471,7 @@ Widget buildSearchBox() {
       height: 50,
       child: InkWell(
         onTap: () {
-          // Get.to(() => const SearchPage());
+          Get.to(() => const SearchPage());
         },
         child: TextField(
           enabled: false,

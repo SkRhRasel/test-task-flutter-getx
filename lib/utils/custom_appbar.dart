@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../data/local/constants.dart';
+import '../ui/features/notifications/notifications_page.dart';
 import 'button_util.dart';
 import 'dimens.dart';
 import 'dart:io' show Platform;
@@ -20,7 +21,7 @@ import 'text_util.dart';
 //         iconPath: AssetConstants.icMenu,
 //         size: dp25,
 //         iconColor: Get.theme.primaryColorDark),
-//     title: textAutoSize(context,
+//     title: textAutoSize(
 //         text: title!,
 //         maxLines: 1,
 //         textAlign: TextAlign.center,
@@ -50,7 +51,7 @@ AppBar appBarMain(BuildContext context,
         iconPath: AssetConstants.icMenu,
         size: dp25,
         iconColor: Get.theme.primaryColorDark),
-    title: textAutoSize(context,
+    title: textAutoSize(
         text: title!,
         maxLines: 1,
         textAlign: TextAlign.center,
@@ -61,12 +62,13 @@ AppBar appBarMain(BuildContext context,
           ? Container(width: dp25)
           : buttonOnlyIcon2(
               onPressCallback: () {
-                // Get.to(() => const NotificationsPage());
+                Get.to(() => const NotificationsPage());
               },
               iconPath: AssetConstants.icNotification),
     ],
   );
 }
+
 AppBar appBarMain2(BuildContext context,
     {String? title, bool hideRightIcon = false}) {
   return AppBar(
@@ -82,7 +84,7 @@ AppBar appBarMain2(BuildContext context,
           },
           iconPath: AssetConstants.icMenu,
           size: 24,
-          iconColor: Theme.of(context).primaryColorLight),
+          iconColor: Get.theme.primaryColorLight),
     ),
     // flexibleSpace: const Image(
     //   image: AssetImage(AssetConstants.bgAppBar2),
@@ -103,10 +105,10 @@ AppBar appBarMain2(BuildContext context,
     //     )),
     title: Container(
       margin: const EdgeInsets.only(top: 0.0),
-      child: textAutoSize(context,
+      child: textAutoSize(
           text: title!,
           maxLines: 1,
-          color: Theme.of(context).primaryColorLight,
+          color: Get.theme.primaryColorLight,
           textAlign: TextAlign.center,
           fontWeight: FontWeight.w600,
           fontSize: 20),
@@ -117,11 +119,12 @@ AppBar appBarMain2(BuildContext context,
         child: hideRightIcon
             ? Container(width: dp25)
             : buttonOnlyIcon2(
-            onPressCallback: () {
-              // Get.to(() => const NotificationsPage());
-            },
-            size: 24,
-            iconPath: AssetConstants.icNotification,iconColor: Theme.of(context).primaryColorLight),
+                onPressCallback: () {
+                  // Get.to(() => const NotificationsPage());
+                },
+                size: 24,
+                iconPath: AssetConstants.icNotification,
+                iconColor: Get.theme.primaryColorLight),
       ),
     ],
   );
@@ -141,7 +144,7 @@ AppBar appBarMain2(BuildContext context,
 //           },
 //           iconPath: AssetConstants.icMenu,
 //           size: 24,
-//           iconColor: Theme.of(context).primaryColorLight),
+//           iconColor: Get.theme.primaryColorLight),
 //     ),
 //     flexibleSpace: const Image(
 //       image: AssetImage(AssetConstants.bgAppBar2),
@@ -162,10 +165,10 @@ AppBar appBarMain2(BuildContext context,
 //     //     )),
 //     title: Container(
 //       margin: Platform.isAndroid ? const EdgeInsets.only(top:35.0) : const EdgeInsets.only(top:20.0),
-//       child: textAutoSize(context,
+//       child: textAutoSize(
 //           text: title!,
 //           maxLines: 1,
-//           color: Theme.of(context).primaryColorLight,
+//           color: Get.theme.primaryColorLight,
 //           textAlign: TextAlign.center,
 //           fontWeight: FontWeight.w600,
 //           fontSize: 20),
@@ -180,7 +183,7 @@ AppBar appBarMain2(BuildContext context,
 //                   // Get.to(() => const NotificationsPage());
 //                 },
 //             size: 24,
-//                 iconPath: AssetConstants.icNotification,iconColor: Theme.of(context).primaryColorLight),
+//                 iconPath: AssetConstants.icNotification,iconColor: Get.theme.primaryColorLight),
 //       ),
 //     ],
 //   );
@@ -194,7 +197,7 @@ AppBar appBarMain2(BuildContext context,
 //     leading: buttonOnlyIcon(onPressCallback: () {
 //       Scaffold.of(context).openDrawer();
 //     }, iconPath: AssetConstants.icMenu, size: dp25,iconColor: Get.theme.primaryColorDark),
-//     title: textAutoSize(context,text: title!, maxLines: 1,textAlign: TextAlign.center,fontWeight: FontWeight.w600,fontSize: 20),
+//     title: textAutoSize(text: title!, maxLines: 1,textAlign: TextAlign.center,fontWeight: FontWeight.w600,fontSize: 20),
 //     actions: [
 //       buttonOnlyIcon2(onPressCallback: () {
 //         Get.to(() =>const FilterPage());
@@ -220,7 +223,7 @@ AppBar buildAppBarWithBack(BuildContext context,
         iconPath: AssetConstants.icBack,
         size: Dimens.iconSize,
         iconColor: Get.theme.primaryColorLight),
-    title: textAutoSize(context,
+    title: textAutoSize(
         text: title!,
         maxLines: 1,
         textAlign: TextAlign.center,
@@ -233,10 +236,12 @@ AppBar buildAppBarWithBack(BuildContext context,
               onPressCallback: () {
                 // Get.to(() => const NotificationsPage());
               },
-              iconPath: AssetConstants.icNotification,iconSize: 24),
+              iconPath: AssetConstants.icNotification,
+              iconSize: 24),
     ],
   );
 }
+
 AppBar buildAppBarFilterWithBack(BuildContext context,
     {String? title, bool hideRightIcon = false}) {
   return AppBar(
@@ -251,7 +256,7 @@ AppBar buildAppBarFilterWithBack(BuildContext context,
         iconPath: AssetConstants.icBack,
         size: Dimens.iconSize,
         iconColor: Get.theme.primaryColorLight),
-    title: textAutoSize(context,
+    title: textAutoSize(
         text: title!,
         maxLines: 1,
         textAlign: TextAlign.center,
@@ -262,9 +267,9 @@ AppBar buildAppBarFilterWithBack(BuildContext context,
           ? Container(width: dp25)
           : buttonOnlyIcon2(
               onPressCallback: () {
-                // Get.to(() => const NotificationsPage());
+                Get.to(() => const NotificationsPage());
               },
-              iconPath: AssetConstants.icFilterTwo),
+              iconPath: AssetConstants.icNotification),
     ],
   );
 }
@@ -277,7 +282,7 @@ AppBar buildAppBarFilterWithBack(BuildContext context,
 //     leading: buttonOnlyIcon2(onPressCallback: () {
 //       Get.back();
 //     }, iconPath: AssetConstants.icArrowLeft, size: dp22,iconColor: Get.theme.primaryColorDark),
-//     title: textAutoSize(context,text: title!, maxLines: 1,textAlign: TextAlign.center,fontWeight: FontWeight.w600,fontSize: 20),
+//     title: textAutoSize(text: title!, maxLines: 1,textAlign: TextAlign.center,fontWeight: FontWeight.w600,fontSize: 20),
 //     actions: [
 //       buttonOnlyIcon2(onPressCallback: () {
 //         Get.to(() =>const FilterPage());

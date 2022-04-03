@@ -5,6 +5,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:test_task_flutter_getx/ui/features/bottom_navigation/explore/explore_screen.dart';
+import 'package:test_task_flutter_getx/ui/features/bottom_navigation/home/home_screen.dart';
+import 'package:test_task_flutter_getx/ui/features/bottom_navigation/inbox/inbox_screen.dart';
+import 'package:test_task_flutter_getx/ui/features/bottom_navigation/shop/shop_screen.dart';
 import '../../../data/local/constants.dart';
 import '../../../utils/button_util.dart';
 import '../../../utils/common_utils.dart';
@@ -13,11 +17,6 @@ import '../../../utils/dimens.dart';
 import '../../../utils/image_util.dart';
 import '../../../utils/spacers.dart';
 import '../../../utils/text_util.dart';
-import '../ui/features/bottom_navigation/activity/activity_screen.dart';
-import '../ui/features/bottom_navigation/dashboard/dashboard_screen.dart';
-import '../ui/features/bottom_navigation/market/market_screen.dart';
-import '../ui/features/bottom_navigation/wallet/wallet_screen.dart';
-import 'custom_icon_icons.dart';
 import 'root_controller.dart';
 
 class RootScreen extends StatefulWidget {
@@ -35,10 +34,13 @@ class _RootScreenState extends State<RootScreen> with TickerProviderStateMixin {
   late Animation<double> animation;
   late CurvedAnimation curve;
   final iconList = <IconData>[
-    CustomIcons.icdashboard,
-    CustomIcons.wallet,
-    CustomIcons.icmarket,
-    CustomIcons.icactivity,
+    Icons.home,
+    Icons.category,
+    Icons.all_inbox,
+    Icons.shopping_bag_outlined,
+    // CustomIcons2.discovery,
+    // CustomIcons2.message,
+    // CustomIcons2.shop,
   ];
 
   @override
@@ -74,7 +76,7 @@ class _RootScreenState extends State<RootScreen> with TickerProviderStateMixin {
 
     Future.delayed(
       const Duration(seconds: 1),
-      () => _animationController.forward(),
+          () => _animationController.forward(),
     );
   }
 
@@ -86,8 +88,6 @@ class _RootScreenState extends State<RootScreen> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    final double screenWidth = MediaQuery.of(context).size.width;
-    final double screenHeight = MediaQuery.of(context).size.height;
 
     return Scaffold(
         backgroundColor: Get.theme.backgroundColor,
@@ -99,44 +99,54 @@ class _RootScreenState extends State<RootScreen> with TickerProviderStateMixin {
           child: FloatingActionButton(
             child: const Icon(
               Icons.add,
-              size: 40,
+              size: 30,
             ),
-            backgroundColor: Theme.of(context).focusColor,
+            backgroundColor: Get.theme.primaryColorDark,
             onPressed: () {
               _animationController.reset();
               _animationController.forward();
             },
           ),
         ),
-        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+        floatingActionButtonLocation: FloatingActionButtonLocation.miniCenterDocked,
         bottomNavigationBar: AnimatedBottomNavigationBar.builder(
           itemCount: iconList.length,
           tabBuilder: (int index, bool isActive) {
             final iconColor = isActive
-                ? Theme.of(context).primaryColor
-                : Theme.of(context).focusColor;
+                ? Get.theme.colorScheme.secondary
+                : Get.theme.primaryColorLight;
             final bgColor = isActive
-                ? Theme.of(context).focusColor
-                : Theme.of(context).primaryColor;
+                ? Get.theme.colorScheme.secondary
+                : Get.theme.primaryColor;
+            final titleColor = isActive
+                ? Get.theme.colorScheme.secondary
+                : Get.theme.primaryColorLight;
             return Container(
-              margin: const EdgeInsets.all(5),
-              decoration: BoxDecoration(
-                shape: BoxShape.circle, color: bgColor,
-                // border: Border.all(color: Theme.of(context).colorScheme.secondary.withOpacity(0.9), width: 1,),
-              ),
-              child: Icon(
-                iconList[index],
-                size: 20,
-                color: iconColor,
+               margin: const EdgeInsets.symmetric(vertical: 10),
+              // decoration: BoxDecoration(
+              //   shape: BoxShape.circle, color: bgColor,
+              //   // border: Border.all(color: Get.theme.colorScheme.secondary.withOpacity(0.9), width: 1,),
+              // ),
+              child: Column(
+                children: [
+                  Icon(
+                    iconList[index],
+                    size: 20,
+                    color: iconColor,
+                  ),
+                  textAutoSize( text: ListConstants.bottomNavTitle[index],color: titleColor)
+                ],
               ),
             );
           },
+          height: 70,
           activeIndex: _bottomNavIndex,
-          backgroundColor: Theme.of(context).primaryColor,
+          backgroundColor: Get.theme.primaryColor,
           splashColor: HexColor('#FFA400'),
           notchAndCornersAnimation: animation,
           splashSpeedInMilliseconds: 300,
           gapLocation: GapLocation.center,
+          notchMargin: 0,
           notchSmoothness: NotchSmoothness.sharpEdge,
           leftCornerRadius: Dimens.borderRadiusLarge,
           rightCornerRadius: Dimens.borderRadiusLarge,
@@ -144,10 +154,10 @@ class _RootScreenState extends State<RootScreen> with TickerProviderStateMixin {
           // onTap: _controller.onItemTapped,
           // onTap: onItemTapped,
         )
-        // bottomNavigationBar: Obx(() {
-        //   return getBottomNavigationBar();
-        // }),
-        );
+      // bottomNavigationBar: Obx(() {
+      //   return getBottomNavigationBar();
+      // }),
+    );
   }
 
   // void onItemTapped(int index) {
@@ -159,15 +169,15 @@ class _RootScreenState extends State<RootScreen> with TickerProviderStateMixin {
   Widget _getBody() {
     switch (_bottomNavIndex) {
       case 0:
-        return const DashboardScreen();
+        return const HomeScreen();
       case 1:
-        return const WalletScreen();
+        return const ExploreScreen();
       case 2:
-        return const MarketScreen();
+        return const InboxScreen();
       case 3:
-        return const ActivityScreen();
-      // case 4:
-      //   return const StatusPage();
+        return const ShopScreen();
+    // case 4:
+    //   return const StatusPage();
       default:
         return Container();
     }
@@ -175,8 +185,8 @@ class _RootScreenState extends State<RootScreen> with TickerProviderStateMixin {
 
   _getDrawer(context) {
     return Theme(
-      data: Theme.of(context).copyWith(
-        canvasColor: Theme.of(context).backgroundColor,
+      data: Get.theme.copyWith(
+        canvasColor: Get.theme.backgroundColor,
       ),
       child: SizedBox(
         width: MediaQuery.of(context).size.width,
@@ -220,12 +230,12 @@ class _RootScreenState extends State<RootScreen> with TickerProviderStateMixin {
                               height: 108),
                         ),
                       ),
-                      textAutoSize(context,
+                      textAutoSize(
                           width: Get.width,
                           text: 'Geoffrey Chaucer'.tr,
                           fontSize: Dimens.buttonFontSize,
                           textAlign: TextAlign.center),
-                      textAutoSize(context,
+                      textAutoSize(
                           width: Get.width,
                           text: 'geoffreychaucer78@gmail.com',
                           fontSize: Dimens.regularFontSizeExtraMid,
@@ -292,12 +302,12 @@ class _RootScreenState extends State<RootScreen> with TickerProviderStateMixin {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const VSpacer5(),
-                  textAutoSize(context,
+                  textAutoSize(
                       width: Get.width,
                       text: 'Welcome!'.tr,
                       fontSize: dp12,
                       textAlign: TextAlign.center),
-                  textAutoSize(context,
+                  textAutoSize(
                       width: Get.width,
                       text: 'User full Name',
                       fontSize: dp16,
@@ -375,16 +385,16 @@ class _RootScreenState extends State<RootScreen> with TickerProviderStateMixin {
 
   Widget drawerNavMenuItem(
       {required String navTitle,
-      required String iconPath,
-      VoidCallback? navAction}) {
+        required String iconPath,
+        VoidCallback? navAction}) {
     return ListTile(
       contentPadding: const EdgeInsets.only(left: 35),
       leading: imageView(
           imagePath: iconPath,
           iconSize: 22,
-          color: Theme.of(context).primaryColorLight),
-      title: textAutoSize(context,
-          text: navTitle, color: Theme.of(context).primaryColorLight),
+          color: Get.theme.primaryColorLight),
+      title: textAutoSize(
+          text: navTitle, color: Get.theme.primaryColorLight),
       onTap: navAction,
     );
   }
@@ -473,10 +483,10 @@ class _RootScreenState extends State<RootScreen> with TickerProviderStateMixin {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            textAutoSize(context,
+            textAutoSize(
                 text: "Log out".tr, textAlign: TextAlign.center),
             const VSpacer10(),
-            textAutoSize(context,
+            textAutoSize(
                 text: "Are you really want to log out?".tr,
                 maxLines: 2,
                 textAlign: TextAlign.center,

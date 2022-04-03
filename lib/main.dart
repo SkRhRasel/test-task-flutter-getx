@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:test_task_flutter_getx/root/routes.dart';
 import 'package:test_task_flutter_getx/utils/config.dart';
-
 import 'data/local/constants.dart';
 import 'data/local/strings.dart';
+import 'data/remote/api_provider.dart';
 import 'ui/features/splash/splash_page.dart';
 import 'utils/shared_pref_utils.dart';
 import 'utils/theme.dart';
@@ -20,6 +21,7 @@ void main() async {
   bool isDark = await SharedPrefUtil.getBoolean(PrefKeyConstant.kIsDark);
   currentTheme.setThemeMode(isDark);
   runApp(const MyApp());
+  Get.put(APIProvider());
 }
 
 class MyApp extends StatefulWidget {
@@ -61,6 +63,7 @@ class _MyAppState extends State<MyApp> {
       translations: Strings(),
       fallbackLocale: Locale(ArrayConstants.kLanguageMap.values.toList().first),
       initialRoute: "/",
+      getPages: Routes.routes,
       defaultTransition: Transition.rightToLeft,
       home: const SplashScreen(),
     );
