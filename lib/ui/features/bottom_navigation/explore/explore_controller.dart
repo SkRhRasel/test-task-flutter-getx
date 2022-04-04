@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:test_task_flutter_getx/data/models/imageList.dart';
+import 'package:test_task_flutter_getx/data/models/list_response.dart';
+import 'package:test_task_flutter_getx/data/remote/api_repository.dart';
+import 'package:test_task_flutter_getx/utils/common_utils.dart';
 
 class ExploreController extends GetxController with GetSingleTickerProviderStateMixin {
 TabController? walletTabController;
@@ -8,33 +11,51 @@ TabController? walletTabController;
 TextEditingController? searchController;
 
 
-RxList<ImageList> imageList = <ImageList>[].obs;
+List<int> demoList = <int>[1,2,3,4,5,6,7,8,9].obs;
+RxList<Product> productList = <Product>[].obs;
 
-List<int>? assetBalancesList = <int>[1,2,3,4,5,6].obs;
-bool isLoading = true;
 int loadedPage = 0;
 bool hasMoreData = true;
+bool isDataLoaded = false;
+bool isLoading = false;
 
+// void getAllImageList(bool isFromLoadMore) {
+void getAllProductList() {
+  // if (!isFromLoadMore) {
+  //   loadedPage = 0;
+  //   hasMoreData = true;
+  //   imageList.clear();
+  //   isLoading = false;
+  // }
+  // isLoading = true;
+  // loadedPage++;
+  // APIRepository().getImageList(loadedPage).then((resp) {
+  APIRepository().getProductList().then((resp) {
+    isLoading = false;
+    if (resp.products !=null) {
+      // ListResponse response = ListResponse.fromJson(resp!.products);
 
-RxString selectedCurrencyType = "".obs;
-
-
-@override
-void onInit() {
-  walletTabController = TabController(vsync: this, length: 4);
-  super.onInit();
+      try {
+        // List<Product> list = List<Product>.from(resp.products!.map((x) => Product.fromJson(x)));
+        productList.addAll(resp.products!);
+      } catch (e) {
+        printError();
+      }
+      // loadedPage = response.currentPage ?? 0;
+      // hasMoreData = response.nextPageUrl != null;
+    }
+    // else {
+    //   showToast(resp.message,isError: true);
+    // }
+  }, onError: (err) {
+    isLoading = false;
+    showToast(err.toString());
+  });
 }
 
+
   Future<void> getData() async {
-    // todayAuctionList.value = <Auction>[];
-    // categoryList.value = <Category>[];
-    // featuredList.value = <Auction>[];
-    // getTodayAuctions();
-    // getFeaturedItems();
-    //getCategories();
-    // categoryList.value = <Category>[];
-    // getCategories();
-    // getCategoryList(false);
+    // getAllProductList();
   }
 
   void clearView() {

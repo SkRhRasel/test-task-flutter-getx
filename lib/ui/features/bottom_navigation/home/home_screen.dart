@@ -37,17 +37,11 @@ class _HomeScreenState extends State<HomeScreen> {
       body: Container(
         padding: const EdgeInsets.symmetric(horizontal: Dimens.paddingLarge),
         height: Get.height,
-        child: ListView(
-          shrinkWrap: true,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            RefreshIndicator(
-              onRefresh: _controller.getData,
-              child: Column(
-                children: [
-                  const SizedBox(height: Dimens.gapMid),
-                ],
-              ),
-            ),
+            Center(child: textAutoSizePoppins(context, fontSize: 24, text: 'Home Screen'.tr)),
           ],
         ),
       ),

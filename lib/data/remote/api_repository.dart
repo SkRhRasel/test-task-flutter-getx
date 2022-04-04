@@ -1,28 +1,29 @@
 import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
+import 'package:test_task_flutter_getx/data/models/list_response.dart';
 import '../local/constants.dart';
 import 'api_provider.dart';
 
 class APIRepository {
-  // //final provider = Get.find<APIProvider>();
-  // final provider = Get.put(APIProvider());
-  //
-  // //final socketProvider = Get.find<SocketProvider>();
-  //
-  // Map<String, String> authHeader() {
-  //   String? token = GetStorage().read(PrefKeyConstant.accessToken);
-  //   //var mapObj = new Map<String, String>();
-  //   var mapObj = <String, String>{};
-  //   mapObj[APIConstants.kAccept] = APIConstants.vAccept;
-  //   if (token != null && token.isNotEmpty) {
-  //     mapObj[APIConstants.kAuthorization] = "${APIConstants.vBearer} $token";
-  //   }
-  //   //GetUtils.printFunction("authHeader", mapObj[APIConstants.kAuthorization], "kAuthorization");
-  //   return mapObj;
-  // }
+
+  final provider = Get.put(APIProvider());
 
   /// *** GET requests *** ///
+  // Future<ServerResponse> getImageList(int page) async {
+  Future<ListResponse> getProductList() async {
+    var mapObj = <String, String>{};
+    // mapObj[APIConstants.kPage] = "$page";
+    mapObj[APIConstants.kLimit] = DefaultValue.listLimitLarge.toString();
+    return provider.getRequest(APIConstants.baseUrl);
+  }
 
+  // Future<List<dynamic>> getImageList2() async {
+  //   final response = await get(APIConstants.baseUrl);
+  //   if (response.status.hasError){
+  //     return Future.error(response.statusText!);
+  //   }else{
+  //     return response.body[APIConstants.products];
+  //   }
+  // }
 
 
 

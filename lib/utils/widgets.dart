@@ -3,7 +3,6 @@ import 'package:flutter_svg/svg.dart';
 import 'package:test_task_flutter_getx/utils/text_util.dart';
 import 'package:get/get.dart';
 import '../data/local/constants.dart';
-import '../ui/features/search/search_page.dart';
 import 'button_util.dart';
 import 'common_utils.dart';
 import 'decorations.dart';
@@ -464,18 +463,18 @@ Widget dropDownListMain(BuildContext context, List<String> items,
 
 
 
-Widget buildSearchBox() {
-  return Container(
-      margin:
-          const EdgeInsets.only(left: dp0, top: dp10, right: dp0, bottom: dp10),
-      height: 50,
-      child: InkWell(
-        onTap: () {
-          Get.to(() => const SearchPage());
-        },
-        child: TextField(
-          enabled: false,
-          decoration: decorationSearchBox(),
-        ),
-      ));
-}
+// Widget buildSearchBox() {
+//   return Container(
+//       margin:
+//           const EdgeInsets.only(left: dp0, top: dp10, right: dp0, bottom: dp10),
+//       height: 50,
+//       child: InkWell(
+//         onTap: () {
+//           Get.to(() => const SearchPage());
+//         },
+//         child: TextField(
+//           enabled: false,
+//           decoration: decorationSearchBox(),
+//         ),
+//       ));
+// }

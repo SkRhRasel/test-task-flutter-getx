@@ -211,46 +211,14 @@ class OfferType {
 class APIConstants {
   static const baseUrl = "https://mocki.io/v1/02e91d9f-4d8c-4eb4-a4f9-bb4a60ffdaf9";
 
-  //End Urls
-  static const urlSignIn = "/api/sign-in";
-  static const urlSignUp = "/api/sign-up";
-  static const urlVerifyEmail = "/api/verify-email";
-  static const urlForgotPassword = "/api/forgot-password";
-  static const urlResetPassword = "/api/reset-password";
-  static const urlChangePassword = "/api/change-password";
-  static const urlResendEmailVerificationCode = "/api/resend-email-verification-code";
-  static const urlMyProfile = "/api/profile-view";
-  static const urlProfileEdit = "/api/profile-edit";
-  static const urlUpdateProfile = "/api/save-edited-profile";
-  static const urlIdVerification = "/api/id-verification";
-  static const urlSubmitIdVerificationPhoto = "/api/submit-verification-images";
 
   //Key
-  static const kUserName = "username";
-  static const kPassword = "password";
-  static const kAccessToken = "accessToken";
-  static const kRefreshToken = "refreshToken";
-  static const kExpireAt = "expireAt";
-  static const kPhone = "phone";
-  static const kEmail = "email";
-  static const kName = "name";
-  static const kTitle = "title";
-  static const kStatus = "status";
-  static const kImage = "image";
-  static const kId = "id";
-  static const kUpdatedAt = "updatedAt";
-  static const kCreatedAt = "createdAt";
-  static const kAvatar = "avatar";
-  static const kIsEmailVerified = "isEmailVerified";
-  static const kWalletAddress = "walletAddress";
-
-  static const kFirst = "first";
-  static const kPaginateNumber = "paginateNumber";
-
-  static const vBearer = "bearer ";
 
   //response parameter
   static const products = "products";
+  static const kTotal = "total";
+  static const kSkip = "skip";
+  static const kLimit = "limit";
 }
 
 

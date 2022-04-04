@@ -189,7 +189,7 @@ class _RootScreenState extends State<RootScreen> with TickerProviderStateMixin {
         canvasColor: Get.theme.backgroundColor,
       ),
       child: SizedBox(
-        width: MediaQuery.of(context).size.width,
+        width: Get.width / 1.2,
         child: Drawer(
           elevation: 0,
           child: Column(
@@ -199,15 +199,12 @@ class _RootScreenState extends State<RootScreen> with TickerProviderStateMixin {
                 height: 270,
                 width: MediaQuery.of(context).size.width,
                 child: DrawerHeader(
-                  decoration: bgNavDrawer,
+                  decoration: getRoundCornerWithShadow(),
                   margin: const EdgeInsets.all(0),
                   padding: const EdgeInsets.only(bottom: 10),
                   child: Column(
                     children: [
-                      SizedBox(
-                          height: Platform.isAndroid
-                              ? Dimens.gapExtraDoubleLarge
-                              : Dimens.gapLarge),
+                      const SizedBox(height: Dimens.gapMid),
                       ListTile(
                         contentPadding: const EdgeInsets.all(0),
                         dense: true,
@@ -232,12 +229,12 @@ class _RootScreenState extends State<RootScreen> with TickerProviderStateMixin {
                       ),
                       textAutoSize(
                           width: Get.width,
-                          text: 'Geoffrey Chaucer'.tr,
+                          text: 'Sk Rockybul Hasan Rasel'.tr,
                           fontSize: Dimens.buttonFontSize,
                           textAlign: TextAlign.center),
                       textAutoSize(
                           width: Get.width,
-                          text: 'geoffreychaucer78@gmail.com',
+                          text: 'sk.rasel.cse@gmail.com'.tr,
                           fontSize: Dimens.regularFontSizeExtraMid,
                           textAlign: TextAlign.center)
                     ],

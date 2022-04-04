@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/material.dart';
 import 'package:test_task_flutter_getx/data/local/constants.dart';
 import 'package:test_task_flutter_getx/data/models/imageList.dart';
+import 'package:test_task_flutter_getx/data/models/list_response.dart';
+import 'package:test_task_flutter_getx/ui/features/notifications/notifications_screen.dart';
 import 'package:test_task_flutter_getx/utils/custom_appbar.dart';
 import 'package:test_task_flutter_getx/utils/decorations.dart';
 import 'package:test_task_flutter_getx/utils/dimens.dart';
@@ -28,7 +31,8 @@ class _ExploreScreenState extends State<ExploreScreen> {
   void initState() {
     super.initState();
     WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
-      _controller.getAllReceiveCoinHistoryList(false);
+       // _controller.getAllImageList(false);
+       _controller.getAllProductList();
     });
   }
 
@@ -61,14 +65,20 @@ class _ExploreScreenState extends State<ExploreScreen> {
             ),
             const SizedBox(height: Dimens.gapMin),
             horizontalDivider(),
-            const SizedBox(height: Dimens.gapMin),
-            Expanded(
-              child: Container(
-                margin: const EdgeInsets.symmetric(horizontal: dp16),
-                height: Get.height,
-                child: _imageList(),
-              ),
+            // const SizedBox(height: Dimens.gapMin),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 15.0),
+              child: _imageListStaggeredGridView(),
+              // child: _imageList(),
             ),
+            // RefreshIndicator(
+            //   onRefresh: _controller.getData,
+            //   child: Padding(
+            //     padding: const EdgeInsets.symmetric(horizontal: 15.0),
+            //     child: _imageListStaggeredGridView(),
+            //     // child: _imageList(),
+            //   ),
+            // ),
             const SizedBox(height: Dimens.gapMin),
           ],
         ),
@@ -79,39 +89,134 @@ class _ExploreScreenState extends State<ExploreScreen> {
   Widget _imageList() {
     return Obx(() {
       String message = "empty_message_receive_coin_history_list".tr;
-      return _controller.imageList.isEmpty
+      return _controller.productList.isEmpty
           ? handleEmptyViewWithLoading(_controller.isLoading, message: message)
-          : ListView.builder(
-              scrollDirection: Axis.vertical,
-              itemCount: _controller.imageList.length,
-              itemBuilder: (BuildContext context, int index) {
-                // if (_controller.hasMoreData && index == (_controller.imageList.length - 1)) {
-                //   WidgetsBinding.instance?.addPostFrameCallback((timeStamp) {
-                //      _controller.getAllReceiveCoinHistoryList(true);
-                //   });
-                // }
-                // return imageItem(_controller.imageList[index]);
-                return Card(child: Column(
-                  children: [
-                    ListTile(title: imageList[index][''],)
-                  ],
-                ),);
-              },
-            );
+          : SizedBox(
+          height: Get.height - dp160,
+          // height: Get.height - (Get.bottomBarHeight + Get.statusBarHeight + 325),
+          child: GridView.builder(
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                childAspectRatio: 0.895,
+                crossAxisCount: 3,
+                //mainAxisSpacing: 15.0,
+                crossAxisSpacing: 10.0),
+            shrinkWrap: true,
+            scrollDirection: Axis.vertical,
+            itemCount: _controller.productList.length,
+            itemBuilder: (BuildContext context, int index) {
+              // if (_controller.hasMoreData && index == (_controller.categoryList.length - 1)) {
+              //   WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
+              //     _controller.getCategoryList(true);
+              //   });
+              // }
+              return imageItem(_controller.productList[index]);
+            },
+          ));
     });
   }
+  Widget _imageListStaggeredGridView() {
+    return Obx(() {
+      String message = "empty_message".tr;
+      return _controller.productList.isEmpty
+          ? handleEmptyViewWithLoading(_controller.isLoading, message: message)
+          : SizedBox(
+          height: Get.height - dp160,
+          // height: Get.height - (Get.bottomBarHeight + Get.statusBarHeight + 325),
+          child: GridView.custom(
+            gridDelegate: SliverQuiltedGridDelegate(
+              crossAxisCount: 4,
+              mainAxisSpacing: 4,
+              crossAxisSpacing: 4,
+              repeatPattern: QuiltedGridRepeatPattern.inverted,
+              pattern: [
+                QuiltedGridTile(2, 2),
+                QuiltedGridTile(1, 1),
+                QuiltedGridTile(1, 1),
+                QuiltedGridTile(1, 2),
+              ],
+            ),
 
-  Widget imageItem(ImageList imageList) {
+            childrenDelegate: SliverChildBuilderDelegate(
+                  (context, index) {
+                    // if (_controller.hasMoreData && index == (_controller.productList.length - 1)) {
+                    //   WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
+                    //     // _controller.getAllImageList(true);
+                    //     _controller.getAllProductList();
+                    //   });
+                    // }
+                    // _controller.getAllProductList();
+                   return imageItem(_controller.productList[index]);
+                  },
+            ),
+          ));
+    });
+  }
+  // Widget _imageListDemo2() {
+  //   return Obx(() {
+  //     String message = "empty_message_receive_coin_history_list".tr;
+  //     return _controller.demoList.isEmpty
+  //         ? handleEmptyViewWithLoading(_controller.isLoading, message: message)
+  //         : SizedBox(
+  //         height: Get.height - dp160,
+  //         // height: Get.height - (Get.bottomBarHeight + Get.statusBarHeight + 325),
+  //         child: GridView.builder(
+  //           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+  //               childAspectRatio: 0.895,
+  //               crossAxisCount: 3,
+  //               //mainAxisSpacing: 15.0,
+  //               crossAxisSpacing: 10.0),
+  //           shrinkWrap: true,
+  //           scrollDirection: Axis.vertical,
+  //           itemCount: _controller.demoList.length,
+  //           itemBuilder: (BuildContext context, int index) {
+  //             // if (_controller.hasMoreData && index == (_controller.categoryList.length - 1)) {
+  //             //   WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
+  //             //     _controller.getCategoryList(true);
+  //             //   });
+  //             // }
+  //             return imageItemDemo();
+  //           },
+  //         ));
+  //   });
+  // }
+  // Widget imageItemDemo() {
+  //   return Container(
+  //     padding: const EdgeInsets.symmetric(vertical: dp20, horizontal: dp15),
+  //     decoration: getRoundSoftTransparentBox(),
+  //     margin: const EdgeInsets.symmetric(horizontal: dp0, vertical: dp5),
+  //     width: Get.width,
+  //     child: InkWell(
+  //       onTap: () {
+  //         Get.to(() => const NotificationsScreen());
+  //       },
+  //       child: Column(
+  //         crossAxisAlignment: CrossAxisAlignment.start,
+  //         children: [
+  //           textAutoSizePoppins(context, text: 'texttexttext')
+  //           // imageViewNetwork(imagePath: imageList.products!.thumbnail!)
+  //         ],
+  //       ),
+  //     ),
+  //   );
+  // }
+
+  Widget imageItem(Product product) {
     return Container(
-      padding: EdgeInsets.symmetric(vertical: dp20, horizontal: dp15),
+      padding: const EdgeInsets.symmetric(vertical: dp20, horizontal: dp15),
       decoration: getRoundSoftTransparentBox(),
-      margin: EdgeInsets.symmetric(horizontal: dp0, vertical: dp5),
+      margin: const EdgeInsets.symmetric(horizontal: dp0, vertical: dp5),
       width: Get.width,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          // imageViewNetwork(imagePath: imageList.products!.thumbnail!)
-        ],
+      child: InkWell(
+        onTap: () {
+          Get.to(() => const NotificationsScreen());
+        },
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            // textAutoSizePoppins(context, text: product.category!)
+            imageViewNetwork(imagePath: product.thumbnail!,boxFit: BoxFit.cover,height: 100,width: 100)
+          ],
+        ),
       ),
     );
   }

@@ -1,12 +1,13 @@
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:test_task_flutter_getx/data/models/list_response.dart';
+import 'package:test_task_flutter_getx/root/root_screen.dart';
 import '../local/constants.dart';
-import '../models/response.dart';
 
 class APIProvider extends GetConnect {
   @override
   void onInit() {
-    httpClient.baseUrl = APIConstants.baseUrl;
+    // httpClient.baseUrl = APIConstants.baseUrl;
     httpClient.maxAuthRetries = 3;
     httpClient.timeout = const Duration(seconds: 120);
     super.onInit();
@@ -14,21 +15,46 @@ class APIProvider extends GetConnect {
 
   /// *** Common Server Request *** ///
 
-  // Future<ServerResponse> getRequest(String url, Map<String, String> headers, {Map<String, dynamic>? query}) async {
-  //   GetUtils.printFunction("getRequest query", query, "");
-  //   GetUtils.printFunction("getRequest headers", headers, "");
-  //   final response = await get(url, headers: headers, query: query);
-  //   GetUtils.printFunction("getRequest url ", response.request?.url, "");
-  //   return handleResponse(response);
-  // }
-  Future<List<dynamic>> getImageList() async {
-    final response = await get(APIConstants.baseUrl);
-    if (response.status.hasError){
-      return Future.error(response.statusText!);
-    }else{
-      return response.body[APIConstants.products];
+  Future<ListResponse> getRequest(String url ) async {
+    final response = await get(url);
+    GetUtils.printFunction("getRequest url ", response.request?.url, "");
+    if (response.status.hasError) {
+      GetUtils.printFunction("handleResponse statusText", response.statusText, "");
+      return Future.error(response.statusText as String);
+    } else {
+      GetUtils.printFunction("handleResponse body", response.body, "");
+      return ListResponse.fromJson(response.body);
     }
   }
+
+  // Future<List<dynamic>> getImageList() async {
+  //   final response = await get(APIConstants.baseUrl);
+  //   if (response.status.hasError){
+  //     return Future.error(response.statusText!);
+  //   }else{
+  //     return response.body[APIConstants.products];
+  //   }
+  // }
+
+
+  // Future<ServerResponse> handleResponse(Response response) async {
+  //   if (response.statusCode == 401) {
+  //     final storage = GetStorage();
+  //     storage.erase();
+  //     Get.back();
+  //     Get.off(const RootScreen());
+  //     return Future.error(response.statusText as String);
+  //   }
+  //
+  //   if (response.status.hasError) {
+  //     GetUtils.printFunction(
+  //         "handleResponse statusText", response.statusText, "");
+  //     return Future.error(response.statusText as String);
+  //   } else {
+  //     GetUtils.printFunction("handleResponse body", response.body, "");
+  //     return ServerResponse.fromJson(response.body);
+  //   }
+  // }
 
 }
 // Future<DistanceMatrix> getRequestWithFullUrl(String url, {Map query}) async {

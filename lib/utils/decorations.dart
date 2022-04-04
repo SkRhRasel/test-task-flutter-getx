@@ -55,10 +55,10 @@ getBackgroundImageDecoration({required String imagePath}) {
 //   );
 // }
 
-getRoundCornerWithShadow({Color color = kPrimaryColor}) {
+getRoundCornerWithShadow({Color color = kPrimaryColor, double radius = 7}) {
   return BoxDecoration(
     color: color,
-    borderRadius: const BorderRadius.all(Radius.circular(dp7)),
+    borderRadius: BorderRadius.all(Radius.circular(radius)),
     // borderRadius: BorderRadius.only(
     //   topLeft: Radius.circular(dp15),
     //   topRight: Radius.circular(dp15),

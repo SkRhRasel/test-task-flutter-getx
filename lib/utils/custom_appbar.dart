@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../data/local/constants.dart';
-import '../ui/features/notifications/notifications_page.dart';
+import '../ui/features/notifications/notifications_screen.dart';
 import 'button_util.dart';
 import 'dimens.dart';
 import 'dart:io' show Platform;
@@ -62,7 +62,7 @@ AppBar appBarMain(BuildContext context,
           ? Container(width: dp25)
           : buttonOnlyIcon2(
               onPressCallback: () {
-                Get.to(() => const NotificationsPage());
+                Get.to(() => const NotificationsScreen());
               },
               iconPath: AssetConstants.icNotification),
     ],
@@ -220,9 +220,9 @@ AppBar buildAppBarWithBack(BuildContext context,
           Get.back();
         },
         // icon: Icons.chevron_left,
-        iconPath: AssetConstants.icBack,
+        iconPath: AssetConstants.icArrowLeft,
         size: Dimens.iconSize,
-        iconColor: Get.theme.primaryColorLight),
+        iconColor: Get.theme.primaryColorDark),
     title: textAutoSize(
         text: title!,
         maxLines: 1,
@@ -253,7 +253,7 @@ AppBar buildAppBarFilterWithBack(BuildContext context,
           Get.back();
         },
         // icon: Icons.chevron_left,
-        iconPath: AssetConstants.icBack,
+        iconPath: AssetConstants.icArrowLeft,
         size: Dimens.iconSize,
         iconColor: Get.theme.primaryColorLight),
     title: textAutoSize(
@@ -267,7 +267,7 @@ AppBar buildAppBarFilterWithBack(BuildContext context,
           ? Container(width: dp25)
           : buttonOnlyIcon2(
               onPressCallback: () {
-                Get.to(() => const NotificationsPage());
+                Get.to(() => const NotificationsScreen());
               },
               iconPath: AssetConstants.icNotification),
     ],

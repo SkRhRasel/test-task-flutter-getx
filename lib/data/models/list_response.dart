@@ -4,8 +4,6 @@
 
 import 'dart:convert';
 
-import 'imageList.dart';
-
 ListResponse listResponseFromJson(String str) => ListResponse.fromJson(json.decode(str));
 
 String listResponseToJson(ListResponse data) => json.encode(data.toJson());
@@ -23,8 +21,7 @@ class ListResponse {
   int? skip;
   int? limit;
   factory ListResponse.fromJson(Map<String, dynamic> json) => ListResponse(
-    products: List<Product>.from(
-        json["products"].map((x) => Product.fromJson(x))),
+    products: List<Product>.from(json["products"].map((x) => Product.fromJson(x))),
     total: json["total"],
     skip: json["skip"],
     limit: json["limit"],
@@ -40,115 +37,58 @@ class ListResponse {
 }
 
 
-class PageInfo {
-  PageInfo({
-    this.endCursor,
-    required this.hasNextPage,
-    required this.hasPreviousPage,
-    this.startCursor,
+class Product {
+  Product({
+    this.id,
+    this.title,
+    this.description,
+    this.price,
+    this.discountPercentage,
+    this.rating,
+    this.stock,
+    this.brand,
+    this.category,
+    this.thumbnail,
+    this.images,
   });
 
-  String? endCursor;
-  bool hasNextPage;
-  bool hasPreviousPage;
-  String? startCursor;
+  int? id;
+  String? title;
+  String? description;
+  int? price;
+  double? discountPercentage;
+  double? rating;
+  int? stock;
+  String? brand;
+  String? category;
+  String? thumbnail;
+  List<String>? images;
 
-  factory PageInfo.fromJson(Map<String, dynamic> json) => PageInfo(
-    endCursor: json["endCursor"],
-    hasNextPage: json["hasNextPage"] as bool? ?? false,
-    hasPreviousPage: json["hasPreviousPage"] as bool? ?? false,
-    startCursor: json["startCursor"],
+  factory Product.fromJson(Map<String, dynamic> json) => Product(
+    id: json["id"],
+    title: json["title"],
+    description: json["description"],
+    price: json["price"],
+    discountPercentage: json["discountPercentage"].toDouble(),
+    rating: json["rating"].toDouble(),
+    stock: json["stock"],
+    brand: json["brand"],
+    category: json["category"],
+    thumbnail: json["thumbnail"],
+    images: List<String>.from(json["images"].map((x) => x)),
   );
 
   Map<String, dynamic> toJson() => {
-    "endCursor": endCursor,
-    "hasNextPage": hasNextPage,
-    "hasPreviousPage": hasPreviousPage,
-    "startCursor": startCursor,
+    "id": id,
+    "title": title,
+    "description": description,
+    "price": price,
+    "discountPercentage": discountPercentage,
+    "rating": rating,
+    "stock": stock,
+    "brand": brand,
+    "category": category,
+    "thumbnail": thumbnail,
+    "images": List<dynamic>.from(images!.map((x) => x)),
   };
 }
-// // To parse this JSON data, do
-// //
-// //     final listResponse = listResponseFromJson(jsonString);
-//
-// import 'dart:convert';
-//
-// ListResponse listResponseFromJson(String str) => ListResponse.fromJson(json.decode(str));
-//
-// String listResponseToJson(ListResponse data) => json.encode(data.toJson());
-//
-// class ListResponse {
-//   ListResponse({
-//     required this.listItems,
-//   });
-//
-//   ListItems listItems;
-//
-//   factory ListResponse.fromJson(Map<String, dynamic> json) => ListResponse(
-//     //listItems: ListItems.fromJson(json["listItems"]),
-//     listItems: ListItems.fromJson(json[checkJsonKey(json)]),
-//   );
-//
-//   Map<String, dynamic> toJson() => {
-//     "listItems": listItems.toJson(),
-//   };
-// }
-//
-// checkJsonKey(Map<String, dynamic> json){
-//   if (json.containsKey("listItems")) {
-//     return "listItems";
-//   } else if(json.containsKey("getCategoryList")){
-//     return "getCategoryList";
-//   }
-// }
-//
-// class ListItems {
-//   ListItems({
-//     required this.pageInfo,
-//     required this.totalCount,
-//     required this.edges,
-//   });
-//
-//   PageInfo pageInfo;
-//   int totalCount;
-//   List<dynamic> edges;
-//
-//   factory ListItems.fromJson(Map<String, dynamic> json) => ListItems(
-//     pageInfo: PageInfo.fromJson(json["pageInfo"]),
-//     totalCount: json["totalCount"] as int? ?? 0,
-//     edges: List<dynamic>.from(json["edges"].map((x) => x)),
-//   );
-//
-//   Map<String, dynamic> toJson() => {
-//     "pageInfo": pageInfo.toJson(),
-//     "edges": List<dynamic>.from(edges.map((x) => x)),
-//   };
-// }
-//
-// class PageInfo {
-//   PageInfo({
-//     this.endCursor,
-//     required this.hasNextPage,
-//     required this.hasPreviousPage,
-//     this.startCursor,
-//   });
-//
-//   String? endCursor;
-//   bool hasNextPage;
-//   bool hasPreviousPage;
-//   String? startCursor;
-//
-//   factory PageInfo.fromJson(Map<String, dynamic> json) => PageInfo(
-//     endCursor: json["endCursor"],
-//     hasNextPage: json["hasNextPage"] as bool? ?? false,
-//     hasPreviousPage: json["hasPreviousPage"] as bool? ?? false,
-//     startCursor: json["startCursor"],
-//   );
-//
-//   Map<String, dynamic> toJson() => {
-//     "endCursor": endCursor,
-//     "hasNextPage": hasNextPage,
-//     "hasPreviousPage": hasPreviousPage,
-//     "startCursor": startCursor,
-//   };
-// }

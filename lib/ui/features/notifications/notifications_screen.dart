@@ -8,14 +8,14 @@ import 'package:test_task_flutter_getx/utils/text_util.dart';
 import 'package:test_task_flutter_getx/utils/widgets.dart';
 import 'notifications_controller.dart';
 
-class NotificationsPage extends StatefulWidget {
-  const NotificationsPage({Key? key}) : super(key: key);
+class NotificationsScreen extends StatefulWidget {
+  const NotificationsScreen({Key? key}) : super(key: key);
 
   @override
-  _NotificationsPageState createState() => _NotificationsPageState();
+  _NotificationsScreenState createState() => _NotificationsScreenState();
 }
 
-class _NotificationsPageState extends State<NotificationsPage> {
+class _NotificationsScreenState extends State<NotificationsScreen> {
   final _controller = Get.put(NotificationsController());
 
   @override

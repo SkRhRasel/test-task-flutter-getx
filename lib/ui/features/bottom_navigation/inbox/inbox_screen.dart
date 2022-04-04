@@ -35,36 +35,14 @@ class _InboxScreenState extends State<InboxScreen> {
     return Scaffold(
       backgroundColor: Colors.transparent,
       appBar: appBarMain(context, title: "Inbox".tr, hideRightIcon: false),
-      body: SizedBox(
+      body: Container(
+        padding: const EdgeInsets.symmetric(horizontal: Dimens.paddingLarge),
         height: Get.height,
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Expanded(
-              child: RefreshIndicator(
-                onRefresh: _controller.getData,
-                child: SingleChildScrollView(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: Dimens.paddingLarge),
-                    child: Column(
-                      children: [
-                        ExpansionTile(
-                          title:
-                          textAutoSizeDMSans(context, text: "BTC/USDT Chart".tr),
-                          backgroundColor: Colors.transparent,
-                          collapsedIconColor: Get.theme.primaryColorLight,
-                          collapsedBackgroundColor: Colors.transparent,
-                          iconColor: Get.theme.primaryColorLight,
-                          tilePadding: const EdgeInsets.all(0),
-                          childrenPadding: const EdgeInsets.all(0),
-                          children: <Widget>[
-                            imageView(imagePath: AssetConstants.btcChart),
-                          ],
-                        ),
-                        const SizedBox(height: Dimens.gapMid),
-                      ],
-                    )),
-              ),
-            ),
+            Center(child: textAutoSizePoppins(context, fontSize: 24, text: 'Inbox Screen'.tr)),
           ],
         ),
       ),

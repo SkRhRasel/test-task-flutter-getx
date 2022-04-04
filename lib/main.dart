@@ -63,7 +63,7 @@ class _MyAppState extends State<MyApp> {
       translations: Strings(),
       fallbackLocale: Locale(ArrayConstants.kLanguageMap.values.toList().first),
       initialRoute: "/",
-      getPages: Routes.routes,
+      // getPages: Routes.routes,
       defaultTransition: Transition.rightToLeft,
       home: const SplashScreen(),
     );

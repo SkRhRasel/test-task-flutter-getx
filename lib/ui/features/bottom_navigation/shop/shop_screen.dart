@@ -71,9 +71,10 @@ class _ShopScreenState extends State<ShopScreen>
         padding: const EdgeInsets.symmetric(horizontal: Dimens.paddingLarge),
         height: Get.height,
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const SizedBox(height: Dimens.gapMin),
-            textAutoSizeDMSans(context, fontSize: 24, text: 'Overview'.tr),
+            Center(child: textAutoSizePoppins(context, fontSize: 24, text: 'Shop Screen'.tr)),
           ],
         ),
       ),
