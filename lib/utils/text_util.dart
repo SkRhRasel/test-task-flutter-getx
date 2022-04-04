@@ -119,7 +119,7 @@ Widget textAutoSizeKarla(BuildContext context,
   );
 }
 
-Widget textAutoSizeDMSans(BuildContext context,
+Widget textAutoSizeDMSans(
     {required String text,
     VoidCallback? onTap,
     double hMargin = dp0,
@@ -130,8 +130,8 @@ Widget textAutoSizeDMSans(BuildContext context,
     TextAlign textAlign = TextAlign.start,
     double fontSize = Dimens.regularFontSizeMid,
     TextDecoration? decoration}) {
-  double screenWidth = MediaQuery.of(context).size.width;
-  double screenHeight = MediaQuery.of(context).size.height;
+  double screenWidth = Get.width;
+  double screenHeight = Get.height;
   var colorL = color ?? Get.theme.primaryColorDark;
   var widthL = width ?? screenWidth;
   return Container(

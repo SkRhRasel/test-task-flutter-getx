@@ -127,13 +127,13 @@ getRoundCornerBorderOnlyBottom() {
   );
 }
 
-getRoundSoftTransparentBox() {
+getRoundSoftTransparentBox({double radius = 14}) {
   return BoxDecoration(
       color: Get.theme.primaryColor,
-      borderRadius: const BorderRadius.all(Radius.circular(dp7)));
+      borderRadius: BorderRadius.all(Radius.circular(radius)));
 }
 
-boxDecorationRoundCorner({Color color = kPrimaryColor, double radius = 7}) {
+boxDecorationRoundCorner({Color color = kFollowBgColor, double radius = 30}) {
   return BoxDecoration(
     color: color,
     borderRadius: BorderRadius.all(Radius.circular(radius)),

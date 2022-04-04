@@ -125,7 +125,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  textAutoSizeDMSans(context,
+                  textAutoSizeDMSans(
                       text: title,
                       maxLines: 3,
                       textAlign: TextAlign.center,

@@ -1,117 +1,95 @@
 import 'package:flutter/material.dart';
-import 'package:test_task_flutter_getx/utils/text_field_util.dart';
+import 'package:test_task_flutter_getx/data/models/list_response.dart';
+import 'package:test_task_flutter_getx/utils/image_util.dart';
 import 'package:test_task_flutter_getx/utils/text_util.dart';
 import 'package:get/get.dart';
 import '../data/local/constants.dart';
+import '../ui/features/bottom_navigation/explore/product_details/product_details_screen.dart';
 import 'button_util.dart';
-import 'spacers.dart';
-import 'widgets.dart';
 import 'decorations.dart';
 import 'dimens.dart';
 
-void alertForVerifyAccount(BuildContext context, String email) {
+void alertForProductView(BuildContext context, Product product) {
   Get.defaultDialog(
     title: "",
     radius: dp10,
-    backgroundColor: Get.theme.primaryColorDark,
-    content: Column(
-      mainAxisAlignment: MainAxisAlignment.spaceAround,
-      children: [
-        textAutoSize(text: "Need verification".tr,
-            textAlign: TextAlign.center, fontSize: dp24),
-        const VSpacer10(),
-        textAutoSize(text: "Your account is unverified. Please verify your account".tr,
-            maxLines: 4,
-            textAlign: TextAlign.center,
-            fontSize: dp14,
-            fontWeight: FontWeight.normal),
-        const VSpacer20(),
-        buttonRoundedMain(
-            text: "Verify".tr,
-            onPressCallback: () {
-              Get.back();
-              //Get.off(() => EmailVerifyPage(email));
-            },
-            width: Get.width / 2),
-        const VSpacer10(),
-      ],
-    ),
-  );
-}
-
-void getAlertDialogAddPocket({VoidCallback? buttonAction}) {
-  Get.defaultDialog(
-    title: "Want to add new pocket?",
-    titleStyle: Get.theme.textTheme.headline1,
-    radius: dp10,
-    backgroundColor: Get.theme.primaryColor.withOpacity(0.03),
+    backgroundColor: Colors.transparent,
     content: Container(
-      height: Get.width / 2,
+      height: 385,
       width: Get.width,
-      //padding: EdgeInsets.symmetric(vertical: dp20, horizontal: dp15),
+      padding: const EdgeInsets.all(Dimens.paddingLarge),
       decoration: getRoundSoftTransparentBox(),
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const VSpacer20(),
-          textBodyBold14(text: "Coin Amount"),
-          const VSpacer10(),
-          const VSpacer10(),
-          textBodyBold14(text: "Select Your Wallet"),
-          const VSpacer10(),
-          //_walletTypeFilter(),
-          const VSpacer10(),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Expanded(
+                  flex: 1,
+                  child: SizedBox(
+                    height: 32,
+                    width: 32,
+                    child: ClipRRect(
+                        borderRadius:
+                            BorderRadius.circular(Dimens.borderRadius),
+                        child: imageViewNetwork(
+                            imagePath: product.thumbnail,
+                            boxFit: BoxFit.cover,
+                            height: 32,
+                            width: 32)),
+                  )),
+              const SizedBox(width: Dimens.gapMin),
+              Expanded(
+                flex: 3,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    textAutoSizeDMSans(text: product.title.toString()),
+                    textAutoSizePoppins(context,
+                        text: product.category.toString())
+                  ],
+                ),
+              ),
+              // const SizedBox(width: Dimens.gapMin),
+              Expanded(
+                  flex: 2,
+                  child: Container(
+                    height: 35,
+                    decoration: boxDecorationRoundCorner(),
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 7, vertical: 5),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        imageView(imagePath: AssetConstants.icAddUser),
+                        const SizedBox(width: Dimens.gapExtraMin),
+                        textAutoSize(text: 'Follow'),
+                      ],
+                    ),
+                  ))
+            ],
+          ),
+          const SizedBox(height: Dimens.gapMin),
+          SizedBox(
+            height: 234,
+            // width: 32,
+            child: ClipRRect(
+                borderRadius:
+                    BorderRadius.circular(Dimens.borderRadiusExtraLarge),
+                child: imageViewNetwork(
+                    imagePath: product.thumbnail, boxFit: BoxFit.cover)),
+          ),
+          const SizedBox(height: Dimens.gapMin),
+          buttonRoundedMain(
+              text: "View Post",
+              onPressCallback: () {
+                Get.to(() => ProductDetailsScreen(product: product));
+              }),
+          const SizedBox(height: Dimens.gapMin),
         ],
       ),
     ),
   );
 }
-
-changePhotoModalBottomSheet(VoidCallback onPress, VoidCallback onPress2, {double width = 0}) => Get.bottomSheet(
-      Container(
-          alignment: Alignment.bottomCenter,
-          height: 250,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              buttonRoundedFill("Take a picture".tr, onPress, width: width,textColor: Get.theme.primaryColorLight, bgColor: Get.theme.secondaryHeaderColor),
-              horizontalDivider(margin: (Get.width - width) / 2),
-              buttonRoundedFill("Choose a picture".tr, onPress2, width: width,textColor: Get.theme.primaryColorLight, bgColor: Get.theme.secondaryHeaderColor),
-              horizontalDivider(margin: (Get.width - width) / 2),
-              buttonRoundedFill("Cancel".tr, () {
-                Get.back();
-              }, width: width, bgColor: Get.theme.primaryColorDark,textColor: Get.theme.primaryColorLight),
-            ],
-          )),
-      isDismissible: true,
-    );
-
-void showModalSheetFullScreen(Widget customView, BuildContext context, {Function? onClose}) {
-  showModalBottomSheet(
-      isScrollControlled: true,
-      backgroundColor: Colors.transparent,
-      context: context,
-      builder: (context) {
-        return Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Row(
-              children: [
-                buttonOnlyIcon(onPressCallback: () {
-                  Get.back();
-                  if (onClose != null) {
-                    onClose();
-                  }
-                }, iconPath: AssetConstants.icCloseBox, size: dp30)
-              ],
-            ),
-              const VSpacer20(),
-            customView
-          ],
-        );
-      });
-}
-
-

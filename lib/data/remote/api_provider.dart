@@ -1,13 +1,8 @@
 import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
 import 'package:test_task_flutter_getx/data/models/list_response.dart';
-import 'package:test_task_flutter_getx/root/root_screen.dart';
-import '../local/constants.dart';
-
 class APIProvider extends GetConnect {
   @override
   void onInit() {
-    // httpClient.baseUrl = APIConstants.baseUrl;
     httpClient.maxAuthRetries = 3;
     httpClient.timeout = const Duration(seconds: 120);
     super.onInit();

@@ -14,10 +14,12 @@ const Color kMainTextGrayColor = Color(0xff94929B);
 const Color kDropdownBtnColor = Color(0xff777778);
 const Color kAlterTextColor = Color(0xff23262F);
 const Color kLinkTextColor = Color(0xffFF2E2E);
+const Color kFollowBgColor = Color(0xffFEF6F4);
 const Color kBorderColor = Color(0xffF2F2F3);
 const Color blackColor = Color(0xff000000);
 const Color redColor = Color(0xffF31629);
 const Color kBlueColor = Color(0xff2F67FF);
+const Color kButtonBg = Color(0xffF4F5F7);
 
 const String kDateFormat = 'dd MMMM yyyy';
 const String kReceivedDateFormat = 'yyyy-MM-dd HH:mm:ss';

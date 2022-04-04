@@ -236,6 +236,11 @@ class _RootScreenState extends State<RootScreen> with TickerProviderStateMixin {
                           width: Get.width,
                           text: 'sk.rasel.cse@gmail.com'.tr,
                           fontSize: Dimens.regularFontSizeExtraMid,
+                          textAlign: TextAlign.center),
+                      textAutoSize(
+                          width: Get.width,
+                          text: 'Flutter Developer'.tr,
+                          fontSize: Dimens.regularFontSizeExtraMid,
                           textAlign: TextAlign.center)
                     ],
                   ),

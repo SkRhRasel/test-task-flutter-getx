@@ -80,17 +80,14 @@ imageViewNetwork(
     double? height,
     VoidCallback? onPressCallback,
     Color? iconColor,
-      BoxFit? boxFit = BoxFit.contain,
+    BoxFit? boxFit = BoxFit.contain,
     double? iconSize}) {
   return InkWell(
     onTap: onPressCallback,
     child: imagePath!.isNotEmpty
         ? imagePath.contains(".svg")
             ? SvgPicture.network(imagePath,
-                fit: boxFit!,
-                width: width,
-                height: height,
-                color: iconColor)
+                fit: boxFit!, width: width, height: height, color: iconColor)
             : Image.network(imagePath,
                 fit: boxFit!, width: width, height: height)
         : Icon(icon!, size: iconSize, color: iconColor),
@@ -200,7 +197,6 @@ Future<String> getImageDirectoryPath(String path) async {
   return "${appDocDir.path}${AssetConstants.pathTempImageFolder}${DateTime.now().millisecondsSinceEpoch}$path";
 }
 
-
 Widget showImage(String url, {double size = dp90}) {
   return Container(
     padding: const EdgeInsets.all(dp5),
@@ -211,7 +207,11 @@ Widget showImage(String url, {double size = dp90}) {
       fit: BoxFit.cover,
       placeholder: (context, url) => SvgPicture.asset(AssetConstants.icLogo),
       errorWidget: (context, url, error) {
-        return SvgPicture.asset(AssetConstants.icLogo, height: size/2, width: size / 2,);
+        return SvgPicture.asset(
+          AssetConstants.icLogo,
+          height: size / 2,
+          width: size / 2,
+        );
       },
     ),
   );

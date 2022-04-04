@@ -1,6 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:test_task_flutter_getx/data/local/constants.dart';
 import 'package:test_task_flutter_getx/utils/decorations.dart';
 import 'package:test_task_flutter_getx/utils/text_util.dart';
 import 'package:get/get.dart';
@@ -44,23 +45,23 @@ Widget buttonRoundedMain(
     VoidCallback? onPressCallback,
     Color? textColor,
     Color? bgColor,double buttonHeight = dp50,
-    double width = dp0, double? borderRadius = Dimens.borderRadius}) {
+    double width = dp0, double? borderRadius = Dimens.borderRadiusExtraLarge}) {
   double buttonWidth = width == 0 ? Get.width : width;
   return Container(
       margin: const EdgeInsets.only(left: 0, right: 0, bottom: 0),
       height: buttonHeight,
       width: buttonWidth,
       child: ElevatedButton(
-          child: AutoSizeText(text, style: Get.theme.textTheme.labelLarge),
+          child: textAutoSizeDMSans( text: text),
           style: ButtonStyle(
               foregroundColor:
-                  MaterialStateProperty.all<Color>(Get.theme.focusColor),
+                  MaterialStateProperty.all<Color>(kButtonBg),
               backgroundColor:
-                  MaterialStateProperty.all<Color>(Get.theme.focusColor),
+                  MaterialStateProperty.all<Color>(kButtonBg),
               shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                   RoundedRectangleBorder(
                       borderRadius: BorderRadius.all(Radius.circular(borderRadius!)),
-                      side: BorderSide(color: Get.theme.focusColor)))),
+                      side: BorderSide(color: kButtonBg)))),
           onPressed: onPressCallback));
 }
 
@@ -267,7 +268,7 @@ Widget buttonLoadMore(BuildContext context, {double fontSize = dp15, VoidCallbac
         alignment: Alignment.center,
         padding: const EdgeInsets.symmetric(horizontal: 15),
         decoration: boxDecorationRoundBorder(borderColor: Get.theme.dividerColor),
-        child: textAutoSizeDMSans(context, text: 'Load more'.tr)),
+        child: textAutoSizeDMSans( text: 'Load more'.tr)),
   );
 }
 Widget buttonBorder(BuildContext context, {String? btnText, double fontSize = dp15,double radius = 12, VoidCallback? action,double? btnWidth}) {
@@ -280,7 +281,7 @@ Widget buttonBorder(BuildContext context, {String? btnText, double fontSize = dp
         alignment: Alignment.center,
         padding: const EdgeInsets.symmetric(horizontal: 15),
         decoration: boxDecorationRoundBorder(borderColor: Get.theme.dividerColor,radius: radius),
-        child: textAutoSizeDMSans(context, text: btnText!)),
+        child: textAutoSizeDMSans( text: btnText!)),
   );
 }
 

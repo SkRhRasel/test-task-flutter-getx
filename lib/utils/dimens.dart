@@ -27,6 +27,7 @@ class Dimens {
   static const double borderRadiusForCircle = 50.0;
   static const double borderRadius = 7.0;
   static const double borderRadiusLarge = 15.0;
+  static const double borderRadiusExtraLarge = 20.0;
 
 
   static const double btnHeightMain = 50.0;
