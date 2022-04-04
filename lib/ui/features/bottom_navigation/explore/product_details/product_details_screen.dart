@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:get/get.dart';
 import 'package:test_task_flutter_getx/data/models/list_response.dart';
 import 'package:test_task_flutter_getx/ui/features/bottom_navigation/explore/explore_controller.dart';
@@ -42,20 +43,94 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
         body: SafeArea(
             child: Center(
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: Dimens.paddingLarge),
+            padding:
+                const EdgeInsets.symmetric(horizontal: Dimens.paddingLarge),
             child: Column(
               children: [
-                SizedBox(
-                  height: 234,
-                  width: Get.width,
-                  child: ClipRRect(
-                      borderRadius:
-                          BorderRadius.circular(Dimens.borderRadiusExtraLarge),
-                      child: imageViewNetwork(
-                          imagePath: widget.product.thumbnail,
-                          boxFit: BoxFit.contain)),
+                Stack(
+                  children: [
+                    SizedBox(
+                      height: 234,
+                      width: Get.width,
+                      child: ClipRRect(
+                          borderRadius: BorderRadius.circular(
+                              Dimens.borderRadiusExtraLarge),
+                          child: imageViewNetwork(
+                              imagePath: widget.product.thumbnail,
+                              boxFit: BoxFit.contain)),
+                    ),
+                    Positioned(
+                        top: 0,
+                        right: 0,
+                        child: buttonRoundedWithIconSmall(
+                            widget.product.discountPercentage.toString() +
+                                ' % Off',
+                            Icons.local_offer_outlined,
+                            () {})),
+                    Positioned(
+                        bottom: 0,
+                        left: 0,
+                        child: Container(
+                          padding: const EdgeInsets.all(10),
+                          decoration: boxDecorationRoundCorner(),
+                          child: textAutoSizeKarla(context, text: 'Price: \$'+
+                              widget.product.price.toString()),
+                        ))
+                  ],
                 ),
-                _productImagesList(),
+                const SizedBox(height: Dimens.gapMin),
+                horizontalDivider(),
+                const SizedBox(height: Dimens.gapMin),
+                Align(
+                  alignment: Alignment.centerRight,
+                  child: Container(
+                    decoration: boxDecorationRoundBorder(color: kFollowBgColor.withOpacity(0.5),borderColor: Get.theme.dividerColor),
+                    child: RatingBar.builder(
+                      initialRating: widget.product.rating!,
+                      minRating: 1,
+                      direction: Axis.horizontal,
+                      allowHalfRating: true,
+                      glow: true,
+                      glowRadius: 5,
+                      itemSize: 25,
+                      itemCount: 5,
+                      itemPadding:
+                      const EdgeInsets.symmetric(horizontal: 4.0),
+                      itemBuilder: (context, _) => const Icon(
+                        Icons.star,
+                        color: Colors.amber,
+                      ),
+                      onRatingUpdate: (rating) {
+                        print(rating);
+                      },
+                    ),
+                  ),
+                ),
+                Row(
+                  children: [
+                    textAutoSizeDMSans(text: 'Brand: '),
+                    textAutoSizePoppins(text: widget.product.brand.toString()),
+                  ],
+                ),
+                Row(
+                  children: [
+                    textAutoSizeDMSans(text: 'category: '),
+                    textAutoSizePoppins(text: widget.product.category.toString()),
+                  ],
+                ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    textAutoSizeDMSans(text: 'Product Description: '),
+                    textAutoSizePoppins(text: widget.product.description.toString(),maxLines: 10),
+                  ],
+                ),
+                Row(
+                  children: [
+                    textAutoSizeDMSans(text: 'Stock: '),
+                    textAutoSizePoppins(text: widget.product.stock.toString()),
+                  ],
+                ),
               ],
             ),
           ),
@@ -124,12 +199,11 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                               width: 120),
                     ),
                   ),
-                  Positioned(
-                      top: 0,
-                      right: 0,
-                      child: buttonRoundedWithIconSmall(
-                          "Live".tr, AssetConstants.icNotification, () {})
-                      ),
+                  // Positioned(
+                  //     top: 0,
+                  //     right: 0,
+                  //     child: buttonRoundedWithIconSmall(
+                  //         "Live".tr, AssetConstants.icNotification, () {})),
                 ],
               ),
             ),

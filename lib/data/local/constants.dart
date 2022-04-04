@@ -19,6 +19,7 @@ const Color kBorderColor = Color(0xffF2F2F3);
 const Color blackColor = Color(0xff000000);
 const Color redColor = Color(0xffF31629);
 const Color kBlueColor = Color(0xff2F67FF);
+const Color kGreenColor = Color(0xff3DDC84);
 const Color kButtonBg = Color(0xffF4F5F7);
 const Color kNavButtonInactive = Color(0xffA19FA8);
 

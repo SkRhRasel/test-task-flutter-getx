@@ -40,7 +40,7 @@ Widget textAutoSize(
   );
 }
 
-Widget textAutoSizePoppins(BuildContext context,
+Widget textAutoSizePoppins(
     {required String text,
     VoidCallback? onTap,
     double hMargin = 0,
@@ -52,8 +52,8 @@ Widget textAutoSizePoppins(BuildContext context,
     TextAlign textAlign = TextAlign.start,
     double fontSize = Dimens.regularFontSizeMid,
     TextDecoration? decoration}) {
-  double screenWidth = MediaQuery.of(context).size.width;
-  double screenHeight = MediaQuery.of(context).size.height;
+  double screenWidth = Get.width;
+  double screenHeight = Get.height;
   var colorL = color ?? Get.theme.primaryColorLight;
   var widthL = width ?? screenWidth;
   return Container(

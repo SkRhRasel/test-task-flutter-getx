@@ -74,7 +74,7 @@ class _ShopScreenState extends State<ShopScreen>
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Center(child: textAutoSizePoppins(context, fontSize: 24, text: 'Shop Screen'.tr)),
+            Center(child: textAutoSizePoppins( fontSize: 24, text: 'Shop Screen'.tr)),
           ],
         ),
       ),

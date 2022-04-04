@@ -115,26 +115,26 @@ Widget buttonText(String text, VoidCallback action, {double fontSize = 15}) {
 
 
 Widget buttonRoundedWithIconSmall(
-    String text, String iconPath, VoidCallback onPressCallback,
+    String text, IconData iconPath, VoidCallback onPressCallback,
     {double? margin}) {
   return Container(
       color: Colors.transparent,
-      margin: const EdgeInsets.all(10),
-      height: 20,
-      width: 65,
+      margin: const EdgeInsets.all(Dimens.paddingMin),
+      height: 35,
+      // width: 135,
       child: ElevatedButton.icon(
         icon: imageView(
-          imagePath: iconPath,
+          icon: iconPath,
           height: 5,
-          color: Get.theme.primaryColorLight,
+          color: Get.theme.primaryColor,
         ),
         label:
-            textAutoSize(text: text, color: Get.theme.primaryColorLight),
+            textAutoSize(text: text, color: Get.theme.primaryColor),
         onPressed: onPressCallback,
         style: ElevatedButton.styleFrom(
-          primary: Get.theme.colorScheme.secondary,
+          primary: kGreenColor,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(7),
+            borderRadius: BorderRadius.circular(Dimens.borderRadiusExtraLarge),
           ),
         ),
       ));

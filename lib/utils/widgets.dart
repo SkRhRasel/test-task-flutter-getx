@@ -298,7 +298,7 @@ Widget dropDownList(BuildContext context, List<String> items,
     child: DropdownButton<String>(
       isExpanded: true,
       value: selectedValue.isEmpty ? null : selectedValue,
-      hint: textAutoSizePoppins(context,
+      hint: textAutoSizePoppins(
           text: hint,
           fontSize: 12,
           color: Get.theme.primaryColorLight,
@@ -317,7 +317,7 @@ Widget dropDownList(BuildContext context, List<String> items,
       items: items.map<DropdownMenuItem<String>>((String value) {
         return DropdownMenuItem<String>(
           value: value,
-          child: textAutoSizePoppins(context,
+          child: textAutoSizePoppins(
               text: value,
               fontSize: 12,
               color: Get.theme.primaryColorLight,
@@ -364,7 +364,7 @@ Widget dropDownListForProfile(BuildContext context, List<String> items,
     child: DropdownButton<String>(
       isExpanded: true,
       value: selectedValue.isEmpty ? null : selectedValue,
-      hint: textAutoSizePoppins(context,
+      hint: textAutoSizePoppins(
           fontSize: hintFontSize,
           text: hint,
           color: Get.theme.primaryColorLight),
@@ -387,7 +387,7 @@ Widget dropDownListForProfile(BuildContext context, List<String> items,
       items: items.map<DropdownMenuItem<String>>((String value) {
         return DropdownMenuItem<String>(
           value: value,
-          child: textAutoSizePoppins(context,
+          child: textAutoSizePoppins(
               text: value, color: Get.theme.primaryColorLight),
         );
       }).toList(),
@@ -430,7 +430,7 @@ Widget dropDownListMain(BuildContext context, List<String> items,
     child: DropdownButton<String>(
       isExpanded: true,
       value: selectedValue.isEmpty ? null : selectedValue,
-      hint: textAutoSizePoppins(context,
+      hint: textAutoSizePoppins(
           fontSize: hintFontSize,
           text: hint,
           color: Get.theme.primaryColorLight),
@@ -453,7 +453,7 @@ Widget dropDownListMain(BuildContext context, List<String> items,
       items: items.map<DropdownMenuItem<String>>((String value) {
         return DropdownMenuItem<String>(
           value: value,
-          child: textAutoSizePoppins(context,
+          child: textAutoSizePoppins(
               text: value, color: Get.theme.primaryColorLight),
         );
       }).toList(),

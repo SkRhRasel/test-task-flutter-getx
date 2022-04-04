@@ -30,12 +30,6 @@ class _ExploreScreenState extends State<ExploreScreen> {
   }
 
   @override
-  void dispose() {
-    _controller.clearView();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.transparent,

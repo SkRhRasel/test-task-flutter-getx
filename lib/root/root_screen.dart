@@ -194,30 +194,4 @@ class _RootScreenState extends State<RootScreen> with TickerProviderStateMixin {
       onTap: navAction,
     );
   }
-
-  BottomNavigationBarItem setNavigationItem(
-      String iconPath, String iconPathSelected) {
-    return BottomNavigationBarItem(
-        icon: SvgPicture.asset(
-          iconPath,
-          height: 24,
-        ),
-        activeIcon: SvgPicture.asset(
-          iconPathSelected,
-          height: 44,
-        ),
-        label: "");
-  }
-}
-
-class HexColor extends Color {
-  HexColor(final String hexColor) : super(_getColorFromHex(hexColor));
-
-  static int _getColorFromHex(String hexColor) {
-    hexColor = hexColor.toUpperCase().replaceAll('#', '');
-    if (hexColor.length == 6) {
-      hexColor = 'FF' + hexColor;
-    }
-    return int.parse(hexColor, radix: 16);
-  }
 }

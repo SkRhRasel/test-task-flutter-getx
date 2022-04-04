@@ -47,7 +47,7 @@ void alertForProductView(BuildContext context, Product product) {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     textAutoSizeDMSans(text: product.title.toString()),
-                    textAutoSizePoppins(context,
+                    textAutoSizePoppins(
                         text: product.category.toString())
                   ],
                 ),

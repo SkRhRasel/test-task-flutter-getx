@@ -7,7 +7,6 @@ class APIRepository {
   final provider = Get.put(APIProvider());
 
   /// *** GET requests *** ///
-  // Future<ServerResponse> getImageList(int page) async {
   Future<ListResponse> getProductList(int total) async {
     var mapObj = <String, String>{};
     mapObj[APIConstants.kTotal] = "$total";

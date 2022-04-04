@@ -103,7 +103,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                   Padding(
                     padding: const EdgeInsets.only(top: 20.0),
                     child: Align(alignment: Alignment.centerRight,
-                      child: textAutoSizePoppins(context,
+                      child: textAutoSizePoppins(
                           text: page == 2 ? '' : 'Skip'.tr, textAlign: TextAlign.right,
                           color: Get.theme.primaryColor,
                           fontSize: Dimens.regularFontSizeExtraMid, onTap: () {
