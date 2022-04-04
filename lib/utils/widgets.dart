@@ -40,7 +40,7 @@ Widget listTitleWithLeftIcon(BuildContext context,
           buttonOnlyIcon2(
               onPressCallback: action,
               iconPath: iconPath!,
-              size: dp18,
+              size: 18,
               iconColor: iconColor),
           textAutoSize( text: title!, maxLines: 1),
         ],
@@ -52,7 +52,7 @@ Widget listTitleWithLeftIcon(BuildContext context,
 Widget listTitleWithArrow(BuildContext context,
     {String? title, String? iconPath, VoidCallback? action}) {
   return SizedBox(
-    height: dp45,
+    height: 45,
     //color: Colors.blue,
     child: InkWell(
       onTap: action,
@@ -66,7 +66,7 @@ Widget listTitleWithArrow(BuildContext context,
             buttonOnlyIcon(
                 onPressCallback: action,
                 iconPath: iconPath!,
-                size: dp20,
+                size: 20,
                 iconColor: Get.theme.primaryColor)
           ],
         ),
@@ -77,11 +77,11 @@ Widget listTitleWithArrow(BuildContext context,
 
 Widget listTitle(String title, String buttonTitle, VoidCallback action) {
   return Container(
-    margin: const EdgeInsets.only(left: dp15, right: dp2),
-    height: dp50,
+    margin: const EdgeInsets.only(left: 15, right: 2),
+    height: 50,
     child: Row(
       children: [
-        Expanded(child: textAutoSizeBold15(text: title)),
+        Expanded(child: textAutoSize(text: title)),
         buttonText(buttonTitle, action)
       ],
     ),
@@ -115,7 +115,7 @@ Widget showEmptyView() {
   return SizedBox(
     height: Get.width,
     child: Center(
-      child: textAutoSizeBold16(text: "Data not found".tr),
+      child: textAutoSize(text: "Data not found".tr),
     ),
   );
 }
@@ -148,7 +148,7 @@ Widget viewTitleWithSubTitleText(BuildContext context,
         textAutoSize(
             text: stringNullCheck(title),
             textAlign: TextAlign.center,
-            fontSize: dp24,
+            fontSize: 24,
             color: Get.theme.primaryColorDark,
             fontWeight: FontWeight.bold),
         const SizedBox(height: Dimens.gapMin),
@@ -175,7 +175,7 @@ Widget viewTitleWithTwoSubTitleText(BuildContext context,
         textAutoSize(
             text: stringNullCheck(title),
             textAlign: TextAlign.center,
-            fontSize: dp24,
+            fontSize: 24,
             color: Get.theme.primaryColorDark,
             fontWeight: FontWeight.bold),
         const SizedBox(height: Dimens.gapExtraMin),
@@ -199,8 +199,8 @@ Widget notificationItem() {
   return Container(
     decoration: decorationRoundCornerBox(color: Get.theme.primaryColor),
     alignment: Alignment.center,
-    margin: const EdgeInsets.symmetric(vertical: dp10),
-    height: dp100,
+    margin: const EdgeInsets.symmetric(vertical: 10),
+    height: 100,
     child: Row(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
@@ -211,12 +211,12 @@ Widget notificationItem() {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             SizedBox(
-              width: Get.width - dp150,
-              child: textAutoSizeNormal16(
-                text: "New auction from luxury",
+              width: Get.width - 150,
+              child: textAutoSize(
+                text: "Notification Headline",
               ),
             ),
-            textAutoSizeNormal12(text: "20 June, 2021 , 2:30 PM"),
+            textAutoSize(text: "20 June, 2021 , 2:30 PM"),
           ],
         )
       ],
@@ -231,7 +231,7 @@ Widget buttonOnlyIconWithRoundBackground(
     color: isSelected
         ? Get.theme.colorScheme.secondary
         : Get.theme.secondaryHeaderColor.withOpacity(.2),
-    height: dp50,
+    height: 50,
     elevation: 0,
     child: SvgPicture.asset(iconPath),
     // Image.asset(
@@ -240,7 +240,7 @@ Widget buttonOnlyIconWithRoundBackground(
     //   height: dp50,
     //   color: Get.theme.accentColor,
     // ),
-    padding: const EdgeInsets.all(dp5),
+    padding: const EdgeInsets.all(5),
     shape: const CircleBorder(),
   );
 }
@@ -300,7 +300,7 @@ Widget dropDownList(BuildContext context, List<String> items,
       value: selectedValue.isEmpty ? null : selectedValue,
       hint: textAutoSizePoppins(context,
           text: hint,
-          fontSize: dp12,
+          fontSize: 12,
           color: Get.theme.primaryColorLight,
           width: widthL),
       icon: const Icon(Icons.keyboard_arrow_down_outlined,
@@ -319,7 +319,7 @@ Widget dropDownList(BuildContext context, List<String> items,
           value: value,
           child: textAutoSizePoppins(context,
               text: value,
-              fontSize: dp12,
+              fontSize: 12,
               color: Get.theme.primaryColorLight,
               width: widthL),
         );

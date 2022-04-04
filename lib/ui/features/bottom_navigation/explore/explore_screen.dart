@@ -1,20 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:flutter/material.dart';
 import 'package:test_task_flutter_getx/data/local/constants.dart';
-import 'package:test_task_flutter_getx/data/models/imageList.dart';
 import 'package:test_task_flutter_getx/data/models/list_response.dart';
-import 'package:test_task_flutter_getx/ui/features/notifications/notifications_screen.dart';
 import 'package:test_task_flutter_getx/utils/alert_util.dart';
 import 'package:test_task_flutter_getx/utils/custom_appbar.dart';
-import 'package:test_task_flutter_getx/utils/decorations.dart';
 import 'package:test_task_flutter_getx/utils/dimens.dart';
 import 'package:test_task_flutter_getx/utils/image_util.dart';
 import 'package:test_task_flutter_getx/utils/text_field_util.dart';
-import 'package:test_task_flutter_getx/utils/text_util.dart';
-import 'package:get/get.dart';
 import 'package:test_task_flutter_getx/utils/widgets.dart';
 import 'explore_controller.dart';
 
@@ -112,8 +104,6 @@ class _ExploreScreenState extends State<ExploreScreen> {
   Widget imageItem(Product product) {
     return ClipRRect(
       borderRadius: BorderRadius.circular(Dimens.borderRadiusExtraLarge),
-      // padding: EdgeInsets.all(10),
-      // decoration: getRoundSoftTransparentBox(radius: 20),
       child: imageViewNetwork(
           imagePath: product.thumbnail!,
           boxFit: BoxFit.cover,
@@ -123,42 +113,5 @@ class _ExploreScreenState extends State<ExploreScreen> {
             // Get.to(() => const NotificationsScreen());
           }),
     );
-  }
-
-  Widget _imageListStaggeredGridView() {
-    return Obx(() {
-      String message = "empty_message".tr;
-      return _controller.productList.isEmpty
-          ? handleEmptyViewWithLoading(_controller.isLoading, message: message)
-          : SizedBox(
-              height: Get.height - dp160,
-              // height: Get.height - (Get.bottomBarHeight + Get.statusBarHeight + 325),
-              child: GridView.custom(
-                gridDelegate: SliverQuiltedGridDelegate(
-                  crossAxisCount: 4,
-                  mainAxisSpacing: 4,
-                  crossAxisSpacing: 4,
-                  repeatPattern: QuiltedGridRepeatPattern.inverted,
-                  pattern: [
-                    QuiltedGridTile(2, 2),
-                    QuiltedGridTile(1, 1),
-                    QuiltedGridTile(1, 1),
-                    QuiltedGridTile(1, 2),
-                  ],
-                ),
-                childrenDelegate: SliverChildBuilderDelegate(
-                  (context, index) {
-                    // if (_controller.hasMoreData && index == (_controller.productList.length - 1)) {
-                    //   WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
-                    //     // _controller.getAllImageList(true);
-                    //     _controller.getAllProductList();
-                    //   });
-                    // }
-                    // _controller.getAllProductList();
-                    return imageItem(_controller.productList[index]);
-                  },
-                ),
-              ));
-    });
   }
 }

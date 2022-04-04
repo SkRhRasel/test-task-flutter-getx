@@ -28,7 +28,7 @@ Widget textFieldWithPrefixIcon(BuildContext context,
     controller.text = text;
   }
   return Container(
-      height: dp50,
+      height: 50,
       width: width,
       padding: const EdgeInsets.only(left: 0, right: 0, top: 0),
       decoration: getRoundSoftTransparentBox(),

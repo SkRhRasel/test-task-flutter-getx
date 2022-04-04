@@ -12,7 +12,7 @@ import 'dimens.dart';
 void alertForProductView(BuildContext context, Product product) {
   Get.defaultDialog(
     title: "",
-    radius: dp10,
+    radius: 10,
     backgroundColor: Colors.transparent,
     content: Container(
       height: 385,
@@ -74,7 +74,7 @@ void alertForProductView(BuildContext context, Product product) {
           const SizedBox(height: Dimens.gapMin),
           SizedBox(
             height: 234,
-            // width: 32,
+             width: Get.width,
             child: ClipRRect(
                 borderRadius:
                     BorderRadius.circular(Dimens.borderRadiusExtraLarge),

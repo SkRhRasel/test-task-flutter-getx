@@ -132,7 +132,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                       fontSize: Dimens.titleFontSizeLarge,
                       color: Get.theme.primaryColorDark),
                   const SizedBox(height: Dimens.gapLarge),
-                  textAutoSizeBodyMedium(context,
+                  textAutoSize(
                       text: description, maxLines: 5),
                   const SizedBox(height: Dimens.gapMid),
                   Row(

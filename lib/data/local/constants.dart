@@ -20,6 +20,7 @@ const Color blackColor = Color(0xff000000);
 const Color redColor = Color(0xffF31629);
 const Color kBlueColor = Color(0xff2F67FF);
 const Color kButtonBg = Color(0xffF4F5F7);
+const Color kNavButtonInactive = Color(0xffA19FA8);
 
 const String kDateFormat = 'dd MMMM yyyy';
 const String kReceivedDateFormat = 'yyyy-MM-dd HH:mm:ss';
@@ -74,6 +75,7 @@ class AssetConstants {
   static const icInbox = basePathIcons + "icInbox.svg";
   static const icShop = basePathIcons + "icShop.svg";
   static const plus = basePathIcons + "plus.svg";
+  static const icPlus = basePathIcons + "icPlus.svg";
 
   static const icBack = basePathIcons + "icBack.svg";
   static const icSearch = basePathIcons + "icSearch.svg";

@@ -4,8 +4,8 @@ import 'package:test_task_flutter_getx/root/root_screen.dart';
 import 'package:test_task_flutter_getx/ui/features/on_boarding/on_boarding_screen.dart';
 import 'package:test_task_flutter_getx/utils/decorations.dart';
 import 'package:test_task_flutter_getx/utils/shared_pref_utils.dart';
-import 'package:test_task_flutter_getx/utils/text_util.dart';
 import 'package:get/get.dart';
+import 'package:test_task_flutter_getx/utils/text_util.dart';
 import '../../../data/local/constants.dart';
 import '../../../utils/dimens.dart';
 import '../../../utils/image_util.dart';
@@ -72,12 +72,12 @@ class _SplashScreenState extends State<SplashScreen> {
           children: [
             imageView(
                 imagePath: AssetConstants.icLogo,
-                height: dp130,
-                width: dp130),
+                height: 130,
+                width: 130),
             const SizedBox(height: Dimens.gapLarge),
             Padding(
               padding: const EdgeInsets.all(30.0),
-              child: textAutoSizeHeadlineMedium(context,text: 'splashLogoSubText'.tr),
+              child: textAutoSizeDMSans(text: 'splashLogoSubText'.tr),
             ),
           ],
         ),
