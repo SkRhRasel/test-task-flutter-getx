@@ -54,7 +54,6 @@ class _MyAppState extends State<MyApp> {
       darkTheme: darkTheme,
       themeMode: currentTheme.currentTheme(),
       translations: Strings(),
-      fallbackLocale: Locale(ArrayConstants.kLanguageMap.values.toList().first),
       initialRoute: "/",
       defaultTransition: Transition.rightToLeft,
       home: const SplashScreen(),

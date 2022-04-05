@@ -82,13 +82,10 @@ class _SplashScreenState extends State<SplashScreen> {
             children: [
               imageView(
                   imagePath: AssetConstants.icLogo,
-                  height: 130,
-                  width: 130),
-              const SizedBox(height: Dimens.gapLarge),
-              Padding(
-                padding: const EdgeInsets.all(30.0),
-                child: textAutoSizeDMSans(text: 'Shop on the go'.tr),
-              ),
+                  height: Get.width/2,
+                  width: Get.width/2),
+              const SizedBox(height: Dimens.gapMin),
+              textAutoSizeDMSans(text: 'Shop on the go'.tr,color: Get.theme.primaryColor,fontSize: 25),
             ],
           ),
         )
