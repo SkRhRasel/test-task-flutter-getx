@@ -79,7 +79,9 @@ void alertForProductView(BuildContext context, Product product) {
                 borderRadius:
                     BorderRadius.circular(Dimens.borderRadiusExtraLarge),
                 child: imageViewNetwork(
-                    imagePath: product.thumbnail, boxFit: BoxFit.cover)),
+                    imagePath: product.thumbnail, boxFit: BoxFit.cover,onPressCallback: (){
+                  Get.to(() => ProductDetailsScreen(product: product));
+                })),
           ),
           const SizedBox(height: Dimens.gapMin),
           buttonRoundedMain(
