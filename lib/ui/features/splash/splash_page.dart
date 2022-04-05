@@ -45,11 +45,14 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void didChangeDependencies() {
     Timer(const Duration(seconds: 3), () async {
-      var isOnBoarding = await SharedPrefUtil.getBoolean(PrefKeyConstant.kIsOnBoardingDone);
+      var isOnBoarding = await SharedPrefUtil.getBoolean(
+          PrefKeyConstant.kIsOnBoardingDone);
       if (!isOnBoarding) {
-        Get.off(() => const OnBoardingScreen(), transition: Transition.leftToRightWithFade);
-      }else{
-        Get.off(() => const RootScreen(),transition: Transition.leftToRightWithFade);
+        Get.off(() => const OnBoardingScreen(),
+            transition: Transition.leftToRightWithFade);
+      } else {
+        Get.off(() => const RootScreen(),
+            transition: Transition.leftToRightWithFade);
       }
     });
     super.didChangeDependencies();
@@ -58,58 +61,37 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final double screenWidth = MediaQuery.of(context).size.width;
-    final double screenHeight = MediaQuery.of(context).size.height;
+    final double screenWidth = MediaQuery
+        .of(context)
+        .size
+        .width;
+    final double screenHeight = MediaQuery
+        .of(context)
+        .size
+        .height;
     return Scaffold(
-      body: Container(
-        padding: const EdgeInsets.all(0),
-        decoration: getBackgroundImageDecoration(imagePath: AssetConstants.bgSplash),
-        width: screenWidth,
-        height: screenHeight,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            imageView(
-                imagePath: AssetConstants.icLogo,
-                height: 130,
-                width: 130),
-            const SizedBox(height: Dimens.gapLarge),
-            Padding(
-              padding: const EdgeInsets.all(30.0),
-              child: textAutoSizeDMSans(text: 'splashLogoSubText'.tr),
-            ),
-          ],
-        ),
-      )
+        body: Container(
+          padding: const EdgeInsets.all(0),
+          decoration: getBackgroundImageDecoration(
+              imagePath: AssetConstants.bgSplash),
+          width: screenWidth,
+          height: screenHeight,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              imageView(
+                  imagePath: AssetConstants.icLogo,
+                  height: 130,
+                  width: 130),
+              const SizedBox(height: Dimens.gapLarge),
+              Padding(
+                padding: const EdgeInsets.all(30.0),
+                child: textAutoSizeDMSans(text: 'Shop on the go'.tr),
+              ),
+            ],
+          ),
+        )
     );
   }
-// @override
-  // Widget build(BuildContext context) {
-  //   return Scaffold(
-  //     body: GetBuilder<SplashController>(
-  //         // specify type as Controller
-  //         init: SplashController(), // initialize with the Controller
-  //         builder: (splashController) {
-  //           return Container(
-  //             padding: const EdgeInsets.all(0),
-  //             decoration: bgSplash,
-  //             width: MediaQuery.of(context).size.width,
-  //             height: MediaQuery.of(context).size.height,
-  //             child: Column(
-  //               mainAxisAlignment: MainAxisAlignment.center,
-  //               crossAxisAlignment: CrossAxisAlignment.center,
-  //               children: [
-  //                 imageView(
-  //                     imagePath: AssetConstants.icLogo,
-  //                     height: dp130,
-  //                     width: dp130),
-  //                 const SizedBox(height: Dimens.contentHeightGap),
-  //                 textAutoSizeHeadlineMedium(text: 'splashLogoSubText'.tr),
-  //               ],
-  //             ),
-  //           );
-  //         }),
-  //   );
-  // }
 }

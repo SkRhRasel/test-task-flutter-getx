@@ -36,11 +36,8 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
       width: Dimens.paddingMid,
       // width: isActive ? Dimens.paddingMid : Dimens.paddingMid,
       decoration: BoxDecoration(
-        color: isActive
-            ? Get.theme.focusColor
-            : Get.theme.primaryColor,
-        border:
-            Border.all(color: Get.theme.primaryColorLight, width: 2),
+        color: isActive ? Get.theme.focusColor : Get.theme.primaryColor,
+        border: Border.all(color: Get.theme.primaryColorLight, width: 2),
         borderRadius: const BorderRadius.all(Radius.elliptical(10, 10)),
       ),
     );
@@ -48,8 +45,6 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final double screenWidth = MediaQuery.of(context).size.width;
-    final double screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
       backgroundColor: Get.theme.primaryColor,
       body: PageView(
@@ -63,18 +58,18 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
         children: [
           buildOnBoardingPage(
               AssetConstants.onBoarding0,
-              "kOnBoardingTitle_0".tr,
-              "kOnBoardingDescription_0".tr,
+              "OnBoarding Title one",
+              "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ".tr,
               _currentPage),
           buildOnBoardingPage(
               AssetConstants.onBoarding1,
-              "kOnBoardingTitle_1".tr,
-              "kOnBoardingDescription_1".tr,
+              "OnBoarding Title two".tr,
+              "Dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ".tr,
               _currentPage),
           buildOnBoardingPage(
               AssetConstants.onBoarding2,
-              "kOnBoardingTitle_2".tr,
-              "kOnBoardingDescription_2".tr,
+              "OnBoarding Title three".tr,
+              "Printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ".tr,
               _currentPage),
         ],
       ),
@@ -86,7 +81,8 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
     final double screenWidth = MediaQuery.of(context).size.width;
     final double screenHeight = MediaQuery.of(context).size.height;
     return Container(
-      decoration: getBackgroundImageDecoration(imagePath: AssetConstants.bgOnBoarding),
+      decoration:
+          getBackgroundImageDecoration(imagePath: AssetConstants.bgOnBoarding),
       height: screenHeight,
       width: screenWidth,
       child: Padding(
@@ -97,19 +93,24 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
             Expanded(
               flex: 1,
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween ,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   // const SizedBox(height: Dimens.gapExtraMid),
                   Padding(
                     padding: const EdgeInsets.only(top: 20.0),
-                    child: Align(alignment: Alignment.centerRight,
+                    child: Align(
+                      alignment: Alignment.centerRight,
                       child: textAutoSizePoppins(
-                          text: page == 2 ? '' : 'Skip'.tr, textAlign: TextAlign.right,
+                          text: page == 2 ? '' : 'Skip'.tr,
+                          textAlign: TextAlign.right,
                           color: Get.theme.primaryColor,
-                          fontSize: Dimens.regularFontSizeExtraMid, onTap: () {
-                        SharedPrefUtil.writeBoolean(PrefKeyConstant.kIsOnBoardingDone, true);
-                        Get.off(() => const RootScreen(), transition: Transition.leftToRightWithFade);
-                      }),
+                          fontSize: Dimens.regularFontSizeExtraMid,
+                          onTap: () {
+                            SharedPrefUtil.writeBoolean(
+                                PrefKeyConstant.kIsOnBoardingDone, true);
+                            Get.off(() => const RootScreen(),
+                                transition: Transition.leftToRightWithFade);
+                          }),
                     ),
                   ),
                   Image.asset(onBoardingLogo,
@@ -132,8 +133,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                       fontSize: Dimens.titleFontSizeLarge,
                       color: Get.theme.primaryColorDark),
                   const SizedBox(height: Dimens.gapLarge),
-                  textAutoSize(
-                      text: description, maxLines: 5),
+                  textAutoSize(text: description, maxLines: 5),
                   const SizedBox(height: Dimens.gapMid),
                   Row(
                       crossAxisAlignment: CrossAxisAlignment.center,
@@ -150,8 +150,10 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                           print(_currentPage);
                         }
                         if (_currentPage == 2) {
-                          SharedPrefUtil.writeBoolean(PrefKeyConstant.kIsOnBoardingDone, true);
-                          Get.off(() => const RootScreen(), transition: Transition.leftToRightWithFade);
+                          SharedPrefUtil.writeBoolean(
+                              PrefKeyConstant.kIsOnBoardingDone, true);
+                          Get.off(() => const RootScreen(),
+                              transition: Transition.leftToRightWithFade);
                         }
                       }),
                 ],
