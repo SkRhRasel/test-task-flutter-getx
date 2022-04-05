@@ -15,20 +15,10 @@ class Strings extends Translations {
           "empty_message": "No data found",
           "": "",
           "": "",
-          "": "",
-          "": "",
-          "": "",
-          "": "",
-          "": "",
-          "": "",
-          "": "",
         },
 
 
         'de': {
-          "": "",
-          "": "",
-          "": "",
           "": "",
           "": "",
         },
