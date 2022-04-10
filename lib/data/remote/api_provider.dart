@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:test_task_flutter_getx/data/models/cryptoResponse.dart';
 import 'package:test_task_flutter_getx/data/models/list_response.dart';
 
 class APIProvider extends GetConnect {
@@ -23,4 +24,19 @@ class APIProvider extends GetConnect {
       return ListResponse.fromJson(response.body);
     }
   }
+
+  Future<CryptoInfo> getRequestForCryptoData(String url) async {
+    final response = await get(url);
+    GetUtils.printFunction("getRequest url ", response.request?.url, "");
+    if (response.status.hasError) {
+      GetUtils.printFunction(
+          "handleResponse statusText", response.statusText, "");
+      return Future.error(response.statusText as String);
+    } else {
+      GetUtils.printFunction("handleResponse body", response.body, "");
+      return CryptoInfo.fromJson(response.body);
+    }
+  }
+
+
 }

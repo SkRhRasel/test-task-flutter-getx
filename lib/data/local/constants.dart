@@ -93,8 +93,8 @@ class DefaultValue {
 }
 
 class APIConstants {
-  static const baseUrl =
-      "https://mocki.io/v1/02e91d9f-4d8c-4eb4-a4f9-bb4a60ffdaf9";
+  static const baseUrl = "https://mocki.io/v1/02e91d9f-4d8c-4eb4-a4f9-bb4a60ffdaf9";
+  static const baseUrlForCrypto = "https://api.coindesk.com/v1/bpi/historical/close.json?start=2013-09-01&end=2013-09-05&currency=eur";
 
   //Key
 
@@ -103,6 +103,12 @@ class APIConstants {
   static const kTotal = "total";
   static const kSkip = "skip";
   static const kLimit = "limit";
+
+
+  static const kStart = "start";
+  static const kEnd = "end";
+
+
 }
 
 class ListConstants {
