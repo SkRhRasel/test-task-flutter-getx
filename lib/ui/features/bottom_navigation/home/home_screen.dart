@@ -20,7 +20,7 @@ class _HomeScreenState extends State<HomeScreen> {
   void initState() {
     super.initState();
     WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
-      _controller.getCryptoData();
+       _controller.getCryptoData();
     });
   }
 
@@ -39,8 +39,7 @@ class _HomeScreenState extends State<HomeScreen> {
             Center(
                 child: textAutoSizePoppins(
                     fontSize: 24,
-                    text: stringNullCheck(
-                        _controller.cryptoInfo.toString()))),
+                    text:stringNullCheck(_controller.cryptoInfoResponse.value.time!.updated.toString()))),
           ],
         ),
       ),

@@ -25,8 +25,7 @@ void showToast(String text, {bool isError = false, bool isLong = false}) {
 
 void showLoadingDialog({bool isDismissible = false}) {
   if (Get.isDialogOpen == null || !Get.isDialogOpen!) {
-    Get.dialog(const Center(child: CircularProgressIndicator()),
-        barrierDismissible: isDismissible);
+    Get.dialog(const Center(child: CircularProgressIndicator()), barrierDismissible: isDismissible);
   }
 }
 

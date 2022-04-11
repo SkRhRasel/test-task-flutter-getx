@@ -26,7 +26,7 @@ class CryptoInfo {
   );
 
   Map<String, dynamic> toJson() => {
-    "bpi": Map.from(bpi!).map((k, v) => MapEntry<String, dynamic>(k, v)),
+    "bpi": bpi == null ? null :  Map.from(bpi!).map((k, v) => MapEntry<String, dynamic>(k, v)),
     "disclaimer": disclaimer,
     "time": time!.toJson(),
   };
