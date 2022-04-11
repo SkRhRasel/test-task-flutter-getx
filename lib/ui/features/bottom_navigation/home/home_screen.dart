@@ -20,7 +20,7 @@ class _HomeScreenState extends State<HomeScreen> {
   void initState() {
     super.initState();
     WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
-       _controller.getCryptoData();
+      _controller.getCryptoData();
     });
   }
 
@@ -32,15 +32,19 @@ class _HomeScreenState extends State<HomeScreen> {
       body: Container(
         padding: const EdgeInsets.symmetric(horizontal: Dimens.paddingLarge),
         height: Get.height,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Center(
-                child: textAutoSizePoppins(
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              Obx(() {
+                return textAutoSizePoppins(
                     fontSize: 24,
-                    text:stringNullCheck(_controller.cryptoInfoResponse.value.time!.updated.toString()))),
-          ],
+                    color: Colors.black38,
+                    maxLines: 5,
+                    text: stringNullCheck(
+                        _controller.cryptoInfoResponse.value.disclaimer));
+              }),
+            ],
+          ),
         ),
       ),
     );

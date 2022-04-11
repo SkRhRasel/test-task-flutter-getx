@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 import 'package:test_task_flutter_getx/data/models/cryptoResponse.dart';
 import 'package:test_task_flutter_getx/data/remote/api_repository.dart';
 
@@ -8,14 +9,17 @@ class HomeController extends GetxController {
   Rx<CryptoInfo> cryptoInfoResponse = CryptoInfo().obs;
 
   void getCryptoData() {
-    showLoadingDialog(isDismissible: true);
-    String thirtyDays = DateTime.now().subtract(const Duration(days: 30)) as String;
-    String todayDate = DateTime.now() as String;
+    // showLoadingDialog();
+    var thirtyDays = DateTime.now().subtract(const Duration(days: 30));
+    var todayDate = DateTime.now();
+    String formatThirtyDays = DateFormat("yyyy-MM-dd").format(thirtyDays);
+    String formatTodayDate = DateFormat("yyyy-MM-dd").format(todayDate);
 
-    APIRepository().getCryptoData(thirtyDays, todayDate).then((resp) {
-      hideLoadingDialog();
+    APIRepository().getCryptoData(formatThirtyDays, formatTodayDate).then((resp) {
+      // hideLoadingDialog();
+      cryptoInfoResponse.value = resp;
       try {
-        cryptoInfoResponse.value = resp;
+
       } catch (e) {
         printError();
       }

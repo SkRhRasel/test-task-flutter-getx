@@ -15,10 +15,11 @@ class APIRepository {
     return provider.getRequest(APIConstants.baseUrl);
   }
 
-  Future<CryptoInfo> getCryptoData(String start, String end) async {
+  Future<CryptoInfo> getCryptoData(String start,String end) async{
     var mapObj = <String, String>{};
     mapObj[APIConstants.kStart] = start;
     mapObj[APIConstants.kEnd] = end;
     return provider.getRequestForCryptoData(APIConstants.baseUrlForCrypto, query: mapObj);
   }
+
 }
