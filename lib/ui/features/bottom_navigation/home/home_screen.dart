@@ -60,7 +60,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   textAutoSizeDMSans(
                       text: 'Last 30 days maximum price and date: ',
                       textAlign: TextAlign.left,
-                      fontSize: 12),
+                      fontSize: 16),
                   Obx(() {
                     return Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -82,7 +82,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   textAutoSizeDMSans(
                       text: 'Last 30 days lowest price and date: ',
                       textAlign: TextAlign.left,
-                      fontSize: 12),
+                      fontSize: 16),
                   Obx(() {
                     return Column(
                       crossAxisAlignment: CrossAxisAlignment.start,

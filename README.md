@@ -13,7 +13,7 @@ A new Flutter project for test task using flutter GetX.
 ## Authors
 * Sk Rockybul Hasan Rasel, Flutter developer. 
 
-[App APK](https://drive.google.com/drive/folders/1JEUCT0yXkFdMu9rUXd6b3CoIqifdkjkH?usp=sharing)
+[App APK Download](https://drive.google.com/drive/folders/1JEUCT0yXkFdMu9rUXd6b3CoIqifdkjkH?usp=sharing)
 ------------
 App Screenshots-
 - [Explore](assets/images/explore.jpg)
