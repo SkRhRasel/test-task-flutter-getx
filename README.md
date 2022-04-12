@@ -26,4 +26,4 @@ App Screenshots-
   <img src="assets/images/product_details.jpg" alt="Girl in a jacket" width="300">
   
 - [Home page cryto data view](assets/images/home.jpg)
-  <img src="assets/images/product_details.jpg" alt="Girl in a jacket" width="300">
+  <img src="assets/images/home.jpg" alt="Girl in a jacket" width="300">
