@@ -36,74 +36,73 @@ class _HomeScreenState extends State<HomeScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              textAutoSizeDMSans(
-                  text: 'Disclaimer: ',
-                  textAlign: TextAlign.left,
-                  fontSize: 12),
-              Obx(() {
-                return textAutoSizePoppins(
-                    fontSize: 12,
-                    maxLines: 5,
-                    text: stringNullCheck(_controller
-                        .cryptoInfoResponse.value.disclaimer
-                        .toString()));
-              }),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  textAutoSizeDMSans(
+                      text: 'Disclaimer: ',
+                      textAlign: TextAlign.left,
+                      fontSize: 16),
+                  Obx(() {
+                    return textAutoSizePoppins(
+                        fontSize: 16,
+                        maxLines: 5,
+                        text: stringNullCheck(_controller
+                            .cryptoInfoResponse.value.disclaimer
+                            .toString()));
+                  }),
+                ],
+              ),
               const SizedBox(height: 15),
-              textAutoSizeDMSans(
-                  text: 'Last 30 days Maximum price and date: ',
-                  textAlign: TextAlign.left,
-                  fontSize: 12),
-              Obx(() {
-                return Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    textAutoSizePoppins(
-                        fontSize: 12,
-                        maxLines: 10,
-                        text: 'Price: \$' +
-                            _controller.maxValueFinal.value.toString()),
-                    textAutoSizePoppins(
-                        fontSize: 12,
-                        maxLines: 10,
-                        text: 'Date: ' + _controller.maxKeyFinal.value.toString()),
-                  ],
-                );
-              }),
-              // Obx(() {
-              //   return textAutoSizePoppins(
-              //       fontSize: 12,
-              //       maxLines: 10,
-              //       text: stringNullCheck(
-              //           _controller.cryptoInfoResponse.value.bpi.toString()));
-              // }),
-              const SizedBox(height: 15),
-              textAutoSizeDMSans(
-                  text: 'Last 30 days lowest price and date: ',
-                  textAlign: TextAlign.left,
-                  fontSize: 12),
-              Obx(() {
-                return Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    textAutoSizePoppins(
-                        fontSize: 12,
-                        maxLines: 10,
-                        text: 'Price: \$' +
-                            _controller.minValueFinal.value.toString()),
-                    textAutoSizePoppins(
-                        fontSize: 12,
-                        maxLines: 10,
-                        text: 'Date: ' + _controller.minKeyFinal.value.toString()),
-                  ],
-                );
-              }),
-              // Obx(() {
-              //   return textAutoSizePoppins(
-              //       fontSize: 12,
-              //       maxLines: 10,
-              //       text: stringNullCheck(_controller.maxValueFinal.toString()));
-              // }),
-              const SizedBox(height: 15),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  textAutoSizeDMSans(
+                      text: 'Last 30 days maximum price and date: ',
+                      textAlign: TextAlign.left,
+                      fontSize: 12),
+                  Obx(() {
+                    return Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        textAutoSizePoppins(
+                            fontSize: 16,
+                            maxLines: 10,
+                            text: 'Price: \$' +
+                                _controller.maxValueFinal.value.toString()),
+                        textAutoSizePoppins(
+                            fontSize: 16,
+                            maxLines: 10,
+                            text: 'Date: ' +
+                                _controller.maxKeyFinal.value.toString()),
+                      ],
+                    );
+                  }),
+                  const SizedBox(height: 15),
+                  textAutoSizeDMSans(
+                      text: 'Last 30 days lowest price and date: ',
+                      textAlign: TextAlign.left,
+                      fontSize: 12),
+                  Obx(() {
+                    return Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        textAutoSizePoppins(
+                            fontSize: 16,
+                            maxLines: 10,
+                            text: 'Price: \$' +
+                                _controller.minValueFinal.value.toString()),
+                        textAutoSizePoppins(
+                            fontSize: 16,
+                            maxLines: 10,
+                            text: 'Date: ' +
+                                _controller.minKeyFinal.value.toString()),
+                      ],
+                    );
+                  }),
+                  const SizedBox(height: 15),
+                ],
+              ),
             ],
           ),
         ),

@@ -11,9 +11,6 @@ class HomeController extends GetxController {
   RxDouble minValueFinal = 0.0.obs;
   var minKeyFinal = "".obs;
 
-  // RxDouble thevalueLow=0.0.obs;
-  // var thekeyLow;
-
   void getCryptoData() {
     showLoadingDialog();
     var thirtyDays = DateTime.now().subtract(const Duration(days: 30));
@@ -57,9 +54,7 @@ class HomeController extends GetxController {
       print("Date: " + minKey);
       print(minValue);
 
-      try {} catch (e) {
-        printError();
-      }
+
     }, onError: (err) {
       hideLoadingDialog();
       showToast(err.toString());

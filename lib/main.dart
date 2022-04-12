@@ -57,8 +57,7 @@ class _MyAppState extends State<MyApp> {
       translations: Strings(),
       initialRoute: "/",
       defaultTransition: Transition.rightToLeft,
-      // home: const SplashScreen(),
-      home: const RootScreen(),
+      home: const SplashScreen(),
     );
   }
 }
