@@ -50,44 +50,59 @@ class _HomeScreenState extends State<HomeScreen> {
               }),
               const SizedBox(height: 15),
               textAutoSizeDMSans(
-                  text: 'Last 30 days maximum price and date: ',
+                  text: 'Last 30 days Maximum price and date: ',
                   textAlign: TextAlign.left,
                   fontSize: 12),
-              Obx((){
+              Obx(() {
                 return Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     textAutoSizePoppins(
                         fontSize: 12,
                         maxLines: 10,
-                        text: 'Price: \$'+_controller.maxValueFinal.value.toString()),
+                        text: 'Price: \$' +
+                            _controller.maxValueFinal.value.toString()),
                     textAutoSizePoppins(
                         fontSize: 12,
                         maxLines: 10,
-                        text: 'Date: '+_controller.maxKeyFinal.value.toString()),
+                        text: 'Date: ' + _controller.maxKeyFinal.value.toString()),
                   ],
                 );
               }),
+              // Obx(() {
+              //   return textAutoSizePoppins(
+              //       fontSize: 12,
+              //       maxLines: 10,
+              //       text: stringNullCheck(
+              //           _controller.cryptoInfoResponse.value.bpi.toString()));
+              // }),
               const SizedBox(height: 15),
               textAutoSizeDMSans(
                   text: 'Last 30 days lowest price and date: ',
                   textAlign: TextAlign.left,
                   fontSize: 12),
-              Obx((){
+              Obx(() {
                 return Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     textAutoSizePoppins(
                         fontSize: 12,
                         maxLines: 10,
-                        text: 'Price: \$'+_controller.minValueFinal.value.toString()),
+                        text: 'Price: \$' +
+                            _controller.minValueFinal.value.toString()),
                     textAutoSizePoppins(
                         fontSize: 12,
                         maxLines: 10,
-                        text: 'Date: '+_controller.minKeyFinal.value.toString()),
+                        text: 'Date: ' + _controller.minKeyFinal.value.toString()),
                   ],
                 );
               }),
+              // Obx(() {
+              //   return textAutoSizePoppins(
+              //       fontSize: 12,
+              //       maxLines: 10,
+              //       text: stringNullCheck(_controller.maxValueFinal.toString()));
+              // }),
               const SizedBox(height: 15),
             ],
           ),
