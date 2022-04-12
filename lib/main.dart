@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:test_task_flutter_getx/root/root_screen.dart';
 import 'package:test_task_flutter_getx/utils/config.dart';
 import 'data/local/constants.dart';
 import 'data/local/strings.dart';
@@ -56,7 +57,8 @@ class _MyAppState extends State<MyApp> {
       translations: Strings(),
       initialRoute: "/",
       defaultTransition: Transition.rightToLeft,
-      home: const SplashScreen(),
+      // home: const SplashScreen(),
+      home: const RootScreen(),
     );
   }
 }

@@ -34,15 +34,61 @@ class _HomeScreenState extends State<HomeScreen> {
         height: Get.height,
         child: SingleChildScrollView(
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              textAutoSizeDMSans(
+                  text: 'Disclaimer: ',
+                  textAlign: TextAlign.left,
+                  fontSize: 12),
               Obx(() {
                 return textAutoSizePoppins(
-                    fontSize: 24,
-                    color: Colors.black38,
+                    fontSize: 12,
                     maxLines: 5,
-                    text: stringNullCheck(
-                        _controller.cryptoInfoResponse.value.disclaimer));
+                    text: stringNullCheck(_controller
+                        .cryptoInfoResponse.value.disclaimer
+                        .toString()));
               }),
+              const SizedBox(height: 15),
+              textAutoSizeDMSans(
+                  text: 'Last 30 days maximum price and date: ',
+                  textAlign: TextAlign.left,
+                  fontSize: 12),
+              Obx((){
+                return Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    textAutoSizePoppins(
+                        fontSize: 12,
+                        maxLines: 10,
+                        text: 'Price: \$'+_controller.maxValueFinal.value.toString()),
+                    textAutoSizePoppins(
+                        fontSize: 12,
+                        maxLines: 10,
+                        text: 'Date: '+_controller.maxKeyFinal.value.toString()),
+                  ],
+                );
+              }),
+              const SizedBox(height: 15),
+              textAutoSizeDMSans(
+                  text: 'Last 30 days lowest price and date: ',
+                  textAlign: TextAlign.left,
+                  fontSize: 12),
+              Obx((){
+                return Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    textAutoSizePoppins(
+                        fontSize: 12,
+                        maxLines: 10,
+                        text: 'Price: \$'+_controller.minValueFinal.value.toString()),
+                    textAutoSizePoppins(
+                        fontSize: 12,
+                        maxLines: 10,
+                        text: 'Date: '+_controller.minKeyFinal.value.toString()),
+                  ],
+                );
+              }),
+              const SizedBox(height: 15),
             ],
           ),
         ),

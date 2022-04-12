@@ -43,7 +43,8 @@ class APIProvider extends GetConnect {
       return Future.error(response.statusText as String);
     } else {
       GetUtils.printFunction("handleResponse body", response.body, "");
-      return CryptoInfo.fromJson(response.body);
+      // return CryptoInfo.fromJson(response.body);
+      return cryptoInfoFromJson(response.body);
     }
   }
 }
